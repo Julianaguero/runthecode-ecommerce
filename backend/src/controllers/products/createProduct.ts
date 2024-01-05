@@ -1,27 +1,9 @@
 import { RequestHandler } from "express";
-import ProductModel from "../models/productModel"
+import { ProductsDataProps } from "../../types";
+import productModel from "../../models/productModel";
+import CustomError from "../../error/CustomError";
 
-export const getProductsMongo: RequestHandler = async (req, res, next) => {
-    try {
-        const products = await ProductModel.find().exec()
-        res.status(200).json(products)
-    } catch (error) {
-        next(error)
-    }
-};
-
-export const getProduct: RequestHandler = async (req, res, next) => {
-    const productId = req.params.productId;
-    
-    try {
-        const product = await ProductModel.findById(productId).exec();
-        res.status(200).json(product)
-    } catch (error) {
-        next(error)
-    }
-};
-
-export const createProductMongo: RequestHandler = async (req, res, next) => {
+export const createProduct: RequestHandler<unknown, unknown, ProductsDataProps, unknown> = async (req, res, next) => {
     const name = req.body.name;
     const brand = req.body.brand;
     const style = req.body.style;
@@ -31,11 +13,13 @@ export const createProductMongo: RequestHandler = async (req, res, next) => {
     const description = req.body.description;
     const rating = req.body.rating;
     const numReviews = req.body.numReviews;
-    console.log(name, brand, style, price)
 
     try {
+        if (!name) {
+            throw new CustomError("need to have a title", 400, "BAD_REQUEST")
+        }
         //we save this on a variable so we can send it back to the client.
-        const newProduct = await ProductModel.create({
+        const newProduct = await productModel.create({
             name: name,
             brand: brand,
             style: style,
@@ -46,7 +30,7 @@ export const createProductMongo: RequestHandler = async (req, res, next) => {
             rating: rating,
             numReviews: numReviews,
         });
-        console.log(newProduct)
+        console.log("delete this console log" + newProduct)
         //201 = new resource created
         res.status(201).json(newProduct)
     } catch (error) {
@@ -54,3 +38,4 @@ export const createProductMongo: RequestHandler = async (req, res, next) => {
     }
 }
 
+export default createProduct;

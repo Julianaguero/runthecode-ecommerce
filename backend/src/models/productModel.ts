@@ -3,8 +3,8 @@ import mongoose, { InferSchemaType } from "mongoose";
 
 
 const productSchema = new mongoose.Schema({
-    name: { type: String, required: true },
-    brand: { type: String, required: true },
+    name: { type: String, required: true},
+    brand: { type: String, required: true},
     style: { type: String, required: true },
     price: { type: Number, required: true },
     itemsLeft: { type: Number, required: true },
@@ -13,6 +13,9 @@ const productSchema = new mongoose.Schema({
     rating: { type: Number, required: false, min: [0, "Min rating value can not be negative"], max: [5, "Max rating value can not be greater than 5"] },
     numReviews: { type: Number, required: false, min: [0, "Min numReviews value can not be negative"] },
 }, { timestamps: true })
+
+//Create an index in mongoDB por searchProducts
+productSchema.index({name: "text", brand: "text"}, {name: "searchProduct"},);
 
 type ProductSchemaProps = InferSchemaType<typeof productSchema>;
 

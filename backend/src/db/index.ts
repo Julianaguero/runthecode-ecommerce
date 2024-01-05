@@ -1,18 +1,19 @@
-// import mongoose from "mongoose";
-// import dotenv from "dotenv";
+import mongoose from "mongoose";
+import dotenv from "dotenv";
 
-// dotenv.config();
+dotenv.config()
 
-// const MONGODB_URI: string = process.env.MONGODB_URI || "mongodb://localhost/runthecodedb";
+const MONGODB_URI: string = process.env.MONGODB_URI || "mongodb://localhost/runthecodedb"
 
-// mongoose.set("strictQuery", true)
-// mongoose
-//     .connect(MONGODB_URI)
-//     .then(() => {
-//         console.log("connected to mongodb");
-//     })
-//     .catch(() => {
-//         console.log("connection error with mongodb")
-//     })
+const connectToDatabase = async() => {
+    try {
+        await mongoose.connect(MONGODB_URI, { autoIndex: false });
+        console.log("connected to mongodb")
 
-// export default mongoose
+    } catch (error) {
+        console.log("connection error with mongodb")
+    }
+}
+
+export default { connectToDatabase }
+
