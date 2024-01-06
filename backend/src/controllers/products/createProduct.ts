@@ -30,7 +30,6 @@ export const createProduct: RequestHandler<unknown, unknown, ProductsDataProps, 
             rating: rating,
             numReviews: numReviews,
         });
-        console.log("delete this console log" + newProduct)
         //201 = new resource created
         res.status(201).json(newProduct)
     } catch (error) {

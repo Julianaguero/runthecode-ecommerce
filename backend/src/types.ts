@@ -14,6 +14,5 @@ export type ProductsDataProps = {
   export type UpdateProductsDataPropsParams = { productId: string }
   export type UpdateProductsDataPropsBody = Omit<ProductsDataProps, "_id"> 
   
-  //  & { _id: string }
 
   

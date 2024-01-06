@@ -4,14 +4,14 @@ import createProduct from "./createProduct"
 import updateProduct from "./updateProduct"
 import getSearchProducts from "./getSearchProducts"
 import getProductsByBrand from "./getProductsByBrand"
-
-
+import deleteProduct from "./deleteProduct"
 
 export {
     getProducts,
     getProductById,
-    createProduct,
-    updateProduct,
     getSearchProducts,
     getProductsByBrand,
+    createProduct,
+    updateProduct,
+    deleteProduct,
 }
