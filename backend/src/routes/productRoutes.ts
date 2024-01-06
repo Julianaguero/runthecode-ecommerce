@@ -11,12 +11,13 @@ const router = Router();
 
 router.get("/products", getProducts)
 router.get("/products/:productId", getProductById)
+// secondary route /collections/:brand
 router.get("/products/brand/:brand", getProductsByBrand);
 router.get("/search/:searchTerm", getSearchProducts)
 
 
 router.post("/products", createProduct)
 
-router.patch("/products/:productId", updateProduct)
+router.put("/products/:productId", updateProduct)
 
 export default router;

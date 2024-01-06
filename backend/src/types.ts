@@ -1,5 +1,5 @@
 export type ProductsDataProps = {
-    id: number;
+    _id: string;
     name: string;
     brand: string;
     style: string;
@@ -10,3 +10,10 @@ export type ProductsDataProps = {
     rating?: number,
     numReviews?: number,
   }
+
+  export type UpdateProductsDataPropsParams = { productId: string }
+  export type UpdateProductsDataPropsBody = Omit<ProductsDataProps, "_id"> 
+  
+  //  & { _id: string }
+
+  
