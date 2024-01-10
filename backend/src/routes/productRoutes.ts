@@ -5,11 +5,11 @@ import  { createProduct, getProductById, getProducts, getProductsByBrand, getSea
 
 const router = Router();
 // GET routes
-router.get("/products", getProducts)
+router.get("/products/", getProducts)
 router.get("/products/:productId", getProductById)
 // secondary option for route /collections/:brand
-router.get("/collections/brands/", getBrandList);
-router.get("/collections/brands/:brand", getProductsByBrand);
+router.get("/collections/", getBrandList);
+router.get("/collections/:brand", getProductsByBrand);
 router.get("/search/:searchTerm", getSearchProducts)
 
 //POST routes
