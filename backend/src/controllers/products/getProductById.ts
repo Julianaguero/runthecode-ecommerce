@@ -16,8 +16,8 @@ const getProductById: RequestHandler = async (req, res, next) => {
         if (!product) {
             throw new NotFoundError("Product not found")
         }
-
-        res.status(200).json(product)
+        //IMPORTANT! brackets were added to res. an Array of one product instead one object.
+        res.status(200).json([product])
 
     } catch (error) {
         next(error);

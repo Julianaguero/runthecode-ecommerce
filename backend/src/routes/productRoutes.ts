@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import  { createProduct, getProductById, getProducts, getProductsByBrand, getSearchProducts, updateProduct, deleteProduct} from "../controllers/products/index"
+import  { createProduct, getProductById, getProducts, getProductsByBrand, getSearchProducts, updateProduct, deleteProduct, getBrandList} from "../controllers/products/index"
 
 
 const router = Router();
@@ -8,7 +8,8 @@ const router = Router();
 router.get("/products", getProducts)
 router.get("/products/:productId", getProductById)
 // secondary option for route /collections/:brand
-router.get("/products/brand/:brand", getProductsByBrand);
+router.get("/collections/brands/", getBrandList);
+router.get("/collections/brands/:brand", getProductsByBrand);
 router.get("/search/:searchTerm", getSearchProducts)
 
 //POST routes
