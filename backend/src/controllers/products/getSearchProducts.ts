@@ -7,10 +7,9 @@ const getSearchProducts: RequestHandler = async (req, res, next) => {
     
     const searchTerm = req.params.searchTerm as string;
     //busqueda usando query 
-    //const searchTerm = req.query.query
+    // const searchTerm = req.query.query
     //GET http://localhost:3000/api/search?query=jpg
     
-
     try {
         //index: "searchProducts" was created on AtlasDB to perform fuzzySearch.
         const searchResult = await productModel.aggregate([
