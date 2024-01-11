@@ -1,16 +1,8 @@
 import { RequestHandler } from "express";
 import productModel from "../../models/productModel";
 import { NotFoundError } from "../../error";
-import path from "path";
+import { type FilterParamsProps } from "../../types";
 
-type FilterParamsProps = {
-    brand?: string | string[],
-    style?: string | string[],
-    price?: {
-        $gte?: number,
-        $lte?: number,
-    } 
-}
 
 const getFilterProducts: RequestHandler = async (req, res, next) => {
     const brandFilter = req.query.brand as string;
