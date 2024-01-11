@@ -1,40 +1,37 @@
 import { Helmet } from "react-helmet-async";
-import { ProductsProps } from "../types";
-import { useEffect, useState } from "react";
-import { getProducts } from "../services/getProducts";
 import { useParams } from "react-router-dom";
-import { InnerAnimation } from "../components";
+import { InnerAnimation, Spinner } from "../components";
+import useFetchProducts from "../hooks/useFetchProducts";
+import { type ProductsProps } from "../types";
 
 export default function ProductPage() {
-  const [product, setProduct] = useState<ProductsProps | null>(null); // Corregir el tipo
-  const params = useParams<{id: string}>();
+  const params = useParams<{ id: string }>();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const productsData  = await getProducts(`/${params.id}`);
-        //devuelvo el primer item del array
-        setProduct(productsData[0]);
-      } catch (error) {
-        console.log("Error fetching product:", error);
-      }
-    };
+  const { products, isLoading, error } = useFetchProducts<ProductsProps>(params.id);
+    
+  // TODO: improve error boundaries;
+  if (error) return <div>{error}</div>;
+  
 
-    fetchData();
-  }, [params.id]);
-
-  if (!product) {
-    return <div>Loading...</div>; 
+  if (!products || products.length === 0) {
+    return <div>No product found.</div>;
   }
+
+  // we extract the first and only object inside de Array;
+  const product = products[0];
 
   return (
     <InnerAnimation>
       <Helmet>
         <title>{product.name}</title>
         <meta name="description" content="Shop our latest products now." />
-        <link rel="canonical" href={`/product/${product.id}/${product.name.replaceAll(" ", "-")}`} />
+        <link
+          rel="canonical"
+          href={`/product/${product._id}/${product.name.replaceAll(" ", "-")}`}
+        />
       </Helmet>
       <main>
+      {isLoading && <Spinner />}
         <section>
           <div>
             <h1>{product.name}</h1>

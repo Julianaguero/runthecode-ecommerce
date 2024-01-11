@@ -9,7 +9,7 @@ export default function Products({ products }: { products: ProductsProps[] }) {
       <ul className="grid md:grid-cols-[repeat(auto-fill,minmax(250px,1fr))] sm:grid-cols-2 grid-cols-1 gap-4 mx-auto my-10 px-5 ">
         {products &&
           products.map((product) => (
-            <li key={product.id}>
+            <li key={product._id}>
               <ProductCard product={product}/>
             </li>
           ))}

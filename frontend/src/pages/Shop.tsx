@@ -1,36 +1,28 @@
-import { useEffect, useState } from "react";
-import { getProducts } from "../services/getProducts";
-import { Products, SearchBar } from "../components/index";
-import { ProductsProps } from "../types";
+
+import { Products, SearchBar, Spinner, BrandFilter, InnerAnimation } from "../components/index";
 import { Helmet } from "react-helmet-async";
-import InnerAnimation from "../components/layout/InnerAnimation";
+import { useFetchProducts, useFilterProducts } from "../hooks/index";
+import { type ProductsProps } from "../types";
+
+
+
 
 export default function Shop() {
-  // const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [products, setProducts] = useState<ProductsProps[] | []>([]);
-  const [brands, setBrands] = useState<string[] | []>([]);
+  const { products, brands, isLoading, error } = useFetchProducts<ProductsProps>();
+  const { filteredProducts, setFilters } = useFilterProducts(products)
+    
+  console.log(filteredProducts)
 
-  useEffect(() => {
-    // setIsLoading(true);
 
-    const fetchData = async () => {
-      try {
-        const productsData = await getProducts();
-        setProducts(productsData);
+  // TODO: improve error boundaries;
+  if (error) {
+    return <div>{error}</div>;
+  }
 
-        const uniqueBrands = Array.from(
-          new Set(productsData.map((item) => item.brand))
-        );
-        setBrands(uniqueBrands);
-        // setIsLoading(false);
-      } catch (error) {
-        console.log("Error fetching products:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
+  //TODO: async functions makes a render glitch when page is showing. FIX 
+  if (!products || products.length === 0) {
+    return <div>No product found.</div>;
+  }
 
   return (
     <InnerAnimation>
@@ -43,16 +35,14 @@ export default function Shop() {
         <SearchBar />
         <div className="max-w-[1940px] w-full mx-auto flex flex-col justify-center sm:flex-row sm:gap-5">
           <aside className="hidden sm:flex sm:flex-col sm:w-[15rem] items-start">
-            <div className="p-3">
+            <div className="p-3 w-full">
               <h3 className="font-bold text-xl pb-3">Brands</h3>
-              <ul>
-                {brands &&
-                  brands.map((brand, index) => <li key={index}>{brand}</li>)}
-              </ul>
+              {brands && <BrandFilter brands={brands} changeFilters={setFilters}/>}
             </div>
           </aside>
 
-          {products && <Products products={products} />}
+          {isLoading && <Spinner />}
+          {products && <Products products={filteredProducts} />}
         </div>
       </section>
     </InnerAnimation>
