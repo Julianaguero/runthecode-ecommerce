@@ -1,15 +1,16 @@
 import { Routes, Route, useLocation } from "react-router-dom";
-import { ProductPage } from "./pages/index";
+import CartProvider from "./context/CartContext";
 import Header from "./components/Header";
-import { links } from "./lib/data";
+import { ShoppingCart, ProductPage, Search } from "./pages/index";
 import { AnimatePresence } from "framer-motion";
+import { links } from "./utils/data";
 
 
 function App() {
   const location = useLocation()
   
   return (
-    <>
+    <CartProvider>
       <Header />
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
@@ -19,10 +20,12 @@ function App() {
             </Route>
           ))}
           <Route path="product/:id/:name" element={<ProductPage />} />
+          <Route path="cart" element={<ShoppingCart />} />
+          <Route path="search" element={<Search />} />
         </Routes>
       </AnimatePresence>
        
-    </>
+    </CartProvider>
   );
 }
 

@@ -1,16 +1,17 @@
 import { Link } from "react-router-dom";
-import { ProductsProps } from "../types";
 import Rating from "./Rating";
+import { priceToLocaleString } from "../utils/cartUtils";
+import { type ProductsProps } from "../types";
 
 export default function ProductCard({ product }: { product: ProductsProps }) {
   return (
     <Link
-      className="relative flex flex-col items-center justify-center  p-2 border rounded-lg shadow-md"
+      className="relative flex flex-col items-center justify-center  p-2 border shadow-md"
       to={`/product/${product._id}/${product.name.replaceAll(" ", "-")}`}
     >
-      <div className="h-[clamp(5rem,80%,25rem)] aspect-square flex items-center justify-center overflow-hidden">
+      <div className="group h-[clamp(5rem,80%,25rem)] aspect-square flex items-center justify-center overflow-hidden">
         <img
-          className="object-cover object-right-bottom h-full w-full"
+          className="object-cover object-right-bottom h-full w-full aspect-square group-hover:scale-110 transition-all duration-150"
           src={`${product.img}`}
           alt={`${product.name}`}
         />
@@ -23,10 +24,7 @@ export default function ProductCard({ product }: { product: ProductsProps }) {
         </div>
         <h3 className="font-light text-lg">{product.name}</h3>
         <strong>
-          {product.price.toLocaleString("es-ES", {
-            style: "currency",
-            currency: "EUR",
-          })}
+          {priceToLocaleString(product.price)}
         </strong>
       </div>
     </Link>

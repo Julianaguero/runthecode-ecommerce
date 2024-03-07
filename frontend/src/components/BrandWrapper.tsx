@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import { brandList } from "../lib/data";
+import { brandList } from "../utils/data";
 
 export default function BrandWrapper() {
   return (
-    <div className="w-full max-w-[1940px] h-full my-20 mx-auto">
+    <div className="w-full max-w-[1560px] h-full my-20 mx-auto">
       <ul className="grid md:grid-cols-4 grid-cols-2 mx-auto gap-4 px-8">
         {brandList.map(({ path, brandImg, backImg, name }) => (
           <li

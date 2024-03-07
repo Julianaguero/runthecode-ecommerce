@@ -1,9 +1,9 @@
 import picture from "../assets/picture.jpg";
-import ButtonHero from "../components/ButtonHero";
+import HeroButton from "./Buttons/HeroButton";
 
 export default function HeroBanner() {
   return (
-    <div className="relative flex flex-col sm:flex-row items-center justify-center md:h-[37rem] max-w-[1940px] mx-auto h-[29rem]">
+    <div className="relative flex flex-col sm:flex-row items-center justify-center md:h-[37rem] max-w-[1560px] mx-auto h-[29rem]">
           <div className="flex w-full md:w-1/2 h-full bg-black flex-col items-start md:justify-center justify-start pl-6 md:pl-[clamp(2rem,1vw,4rem)] pt-32 md:pt-4 ">
             <p className="text-white font-semibold text-[clamp(35px,4vw+1em,15rem)]  ">
               Trendy as f*ck <br />
@@ -12,7 +12,7 @@ export default function HeroBanner() {
                 Check our latest releases!
               </span>
             </p>
-            <ButtonHero title="Shop now!" textStyle="text-[1rem] md:text-[2.5rem]" buttonStyle="mt-6 active:scale-90 active:border-prussian transition-all ease-in duration-100 " />
+            <HeroButton title="Shop now!" textStyle="text-[1rem] md:text-[2.5rem]" buttonStyle="mt-6 active:scale-90 active:border-prussian transition-all ease-in duration-100 " />
           </div>
           <div className="hidden md:flex flex-1 w-1/2 h-full overflow-hidden ">
             <img

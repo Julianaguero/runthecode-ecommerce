@@ -11,6 +11,7 @@ function Spinner() {
         wrapperStyle={{}}
         wrapperClass="rotating-triangels-wrapper"
       />
+      <p className="text-center text-3xl font-semibold">Loading ....</p>
     </div>
   );
 }

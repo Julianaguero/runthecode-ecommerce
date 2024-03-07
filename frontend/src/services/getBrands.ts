@@ -1,6 +1,6 @@
 
 async function getBrands<U>(urlParam?: string): Promise<U> {
-  let url = `${import.meta.env.VITE_API_URL}collections/`;
+  let url: string = `${import.meta.env.VITE_API_URL}collections/`;
   //check if we search a brand and we add it to the url
   if (urlParam && urlParam !== "") url = `${import.meta.env.API_URL}collections/${urlParam}`;
 

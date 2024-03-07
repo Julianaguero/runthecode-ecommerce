@@ -35,19 +35,22 @@ export default function InnerAnimation({
   const text: VariantsProps = {
     initial: {
       opacity: 1,
+      disabled: false, 
     },
 
     enter: {
       opacity: 0,
-      top: 0,
+      top: "-250px",
+      
+      // transitionEnd: {
+      //   display: "none",
+      // },    
       transition: {duration: .4, delay: .2, ease: [0.76, 0, 0.24, 1]},
-      transitionEnd: { top: "47.5%" },
     },
-
     exit: {
-      opacity: 1,
-      top: "40%",
-      transition: {duration: .3, delay: 0.5, ease: [0.33, 1, 0.24, 1]}
+      top: "-250px",
+      disabled: true, 
+      transition: { duration: 0.75, delay: 0.3, ease: [0.22, 1, 0.36, 1] },
     },
   };
 
@@ -57,7 +60,7 @@ export default function InnerAnimation({
         {...anim(translate)}
         className="fixed bg-prussian top-0 left-0 w-screen h-screen origin-bottom z-50 pointer-events-none"
       />
-      <motion.p className="absolute left-1/2 -translate-x-1/2 z-50 text-center text-[3rem] text-white top-[40%]" {...anim(text)}>
+      <motion.p className="fixed left-1/2 -translate-x-1/2 z-50 text-center text-[3rem] text-white top-[40%] " {...anim(text)}>
         { location.pathname === "/" ? "/we are runthecode" : location.pathname.slice(location.pathname.lastIndexOf("/")) }
       </motion.p>
       <div>{children}</div>

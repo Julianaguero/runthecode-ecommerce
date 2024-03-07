@@ -1,28 +1,25 @@
-
-import { Products, SearchBar, Spinner, BrandFilter, InnerAnimation } from "../components/index";
+import { useContext } from "react";
 import { Helmet } from "react-helmet-async";
-import { useFetchProducts, useFilterProducts } from "../hooks/index";
-import { type ProductsProps } from "../types";
-
-
-
+import {
+  Products,
+  Spinner,
+  InnerAnimation,
+  FiltersBar,
+  ErrorCard,
+  Breadcrumbs,
+} from "../components/index";
+import { useFetchProducts } from "../hooks/index";
+import { FiltersContext } from "../context/FiltersContext";
+import { type BreadcrumbsProps, type ProductsProps } from "../types";
 
 export default function Shop() {
-  const { products, brands, isLoading, error } = useFetchProducts<ProductsProps>();
-  const { filteredProducts, setFilters } = useFilterProducts(products)
-    
-  console.log(filteredProducts)
+  const { isLoading } = useFetchProducts<ProductsProps>();
+  const filtersContext = useContext(FiltersContext);
+  // Comprobación de nulidad antes de acceder a filteredProducts
+  const filteredProducts = filtersContext?.productsToRender;
+  const error = filtersContext?.error;
 
-
-  // TODO: improve error boundaries;
-  if (error) {
-    return <div>{error}</div>;
-  }
-
-  //TODO: async functions makes a render glitch when page is showing. FIX 
-  if (!products || products.length === 0) {
-    return <div>No product found.</div>;
-  }
+  const breadcrumbPath: BreadcrumbsProps[] = [{ name: "Shop", url: "/shop" }];
 
   return (
     <InnerAnimation>
@@ -31,20 +28,22 @@ export default function Shop() {
         <meta name="description" content="Shop our latest products now." />
         <link rel="canonical" href="/shop" />
       </Helmet>
-      <section className="p-10">
-        <SearchBar />
-        <div className="max-w-[1940px] w-full mx-auto flex flex-col justify-center sm:flex-row sm:gap-5">
-          <aside className="hidden sm:flex sm:flex-col sm:w-[15rem] items-start">
-            <div className="p-3 w-full">
-              <h3 className="font-bold text-xl pb-3">Brands</h3>
-              {brands && <BrandFilter brands={brands} changeFilters={setFilters}/>}
-            </div>
+      <main className="max-w-[1560px] mx-auto ">
+        {/* MOVE <SearchBar /> to header */}
+        <aside>
+          <Breadcrumbs breadcrumbPath={breadcrumbPath} />
+        </aside>
+        <section className="w-full mx-auto flex flex-col justify-start sm:gap-2">
+          <aside className="flex flex-row items-center justify-start gap-6 w-full px-6 py-2">
+              <FiltersBar />
           </aside>
-
           {isLoading && <Spinner />}
-          {products && <Products products={filteredProducts} />}
-        </div>
-      </section>
+          {error && <ErrorCard error={error} />}
+          {filteredProducts && !error && (
+            <Products filteredProducts={filteredProducts} />
+          )}
+        </section>
+      </main>
     </InnerAnimation>
   );
 }

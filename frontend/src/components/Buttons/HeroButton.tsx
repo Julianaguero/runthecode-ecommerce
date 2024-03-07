@@ -1,12 +1,9 @@
 import { Link } from "react-router-dom";
+import { type ButtonProps } from "../../types";
 
-type ButtonProps = {
-    buttonStyle?: string,
-    textStyle?: string,
-    title: string,
-}
 
-export default function ButtonHero({buttonStyle, textStyle, title}: ButtonProps) {
+
+export default function HeroButton({buttonStyle, textStyle, title}: ButtonProps) {
   return (
     <Link 
     to="/shop"

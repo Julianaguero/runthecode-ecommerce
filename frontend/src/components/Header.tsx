@@ -1,13 +1,14 @@
 import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
-import { links } from "../lib/data";
-import { HiOutlineUser, HiShoppingCart } from "react-icons/hi";
+import { Cart } from ".";
+import { links } from "../utils/data";
+import { HiOutlineUser } from "react-icons/hi";
 import FramerMagnetic from "./FramerMagnetic";
 
 export default function Header() {
   return (
     <motion.header 
-      className="sticky top-0 w-full max-w-[1940px] mx-auto flex items-center justify-between h-20 p-5 z-50 bg-white/90"
+      className="sticky top-0 w-full max-w-[1560px] mx-auto flex items-center justify-between h-20 p-5 z-50 bg-white/90"
       initial={{y: -100, opacity: 0}}
       animate={{y: 0, opacity: 1}}
       transition={{ 
@@ -45,13 +46,17 @@ export default function Header() {
           ))}
         </ul>
       </nav>
-      <nav className="flex gap-5 ">
-        <NavLink to="/">
+      <nav className="flex gap-5">
+        <NavLink 
+          to="/"
+          aria-label="user login"
+        >
           <HiOutlineUser className="w-6 h-6 hover:text-persimmon" />
         </NavLink>
-        <NavLink to="/">
-          <HiShoppingCart className="w-6 h-6 hover:text-persimmon" />
-        </NavLink>
+        <div>
+        <Cart />
+
+        </div>
       </nav>
     </motion.header>
   );

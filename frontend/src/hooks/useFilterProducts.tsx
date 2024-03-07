@@ -1,33 +1,44 @@
-import { useEffect, useState } from 'react'
-import { type FilterProps, type ProductsProps, type FilteredProductProps } from '../types';
-import getFilterProducts from '../services/getFilterProducts';
+import { useEffect, useState } from "react";
+import {
+  type FilterProps,
+  type ProductsProps,
+  type FilteredProductProps,
+} from "../types";
+import getFilterProducts from "../services/getFilterProducts";
 
+function useFilterProducts(): FilteredProductProps {
+  const [filteredProducts, setFilteredProducts] =
+    useState<ProductsProps[]>([]);
 
+  const [filters, setFilters] = useState<FilterProps>({
+    brand: [],
+    minPrice: 0,
+    maxPrice: 2000,
+  });
 
-function useFilterProducts(products: ProductsProps[]): FilteredProductProps  {
+  const [error, setError] = useState<string | null>(null);
 
-    const [filteredProducts, setFilteredProducts] = useState<ProductsProps[]>(products);
-
-    const [filters, setFilters ] = useState<FilterProps>({brand: []});
-
-
-    useEffect(() => {
-        const fetchFilterProducts =async () => {
-            try {
-                const newProducts = await getFilterProducts(filters);
-                if(!newProducts)  throw new Error(`Error fetching filtered products`); 
-                setFilteredProducts(newProducts);
-
-            } catch (error) {
-                throw new Error(`Conection error`);
-            }    
+  useEffect(() => {
+    const fetchFilterProducts = async () => {
+      try {
+        const newProducts = await getFilterProducts(filters);
+        setFilteredProducts(newProducts || []);
+        setError(null)
+      } catch (error) {
+        //TODO: improve error handler
+        if (error instanceof Error) {
+          setError("No products found");
+        } else {
+          setError("An unknown error occurred");
         }
+        setFilteredProducts([]);
+      }
+    };
 
-        fetchFilterProducts();
+    fetchFilterProducts();
+  }, [filters]);
 
-    }, [filters]);
-
-  return {filteredProducts, setFilters};
+  return { filteredProducts, setFilters, error };
 }
 
 export default useFilterProducts;

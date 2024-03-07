@@ -2,7 +2,7 @@ import React from "react";
 import { Helmet } from "react-helmet-async";
 import { InnerAnimation, StoreCard } from "../components";
 import imgStore from "../assets/web_nike_sneaker_5.jpg";
-import { storesLocationData } from "../lib/data";
+import { storesLocationData } from "../utils/data";
 import { motion } from "framer-motion";
 
 // type StoreLocationProps = (typeof storesLocationData)[]

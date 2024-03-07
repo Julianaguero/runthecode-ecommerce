@@ -15,7 +15,7 @@ export default {
       indigo: colors.indigo,
       yellow: colors.yellow,
       "persimmon": "#E85A13ff",
-      "gamboge": "#EB9613ff",
+      "gamboge": "#de3710", //# EB9613ff
       "blueindigo": "#123C64ff",
       "prussian": "#1D3649ff",
       "isabelline": "#F4F0ECff",

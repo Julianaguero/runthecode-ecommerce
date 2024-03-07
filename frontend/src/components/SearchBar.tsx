@@ -1,31 +1,33 @@
-import { ChangeEvent, FormEvent, useState } from "react";
+// TODO: el componente es funcional: 
+// que el handleSubmit redirija a /search y muestre los resultados de la busqueda.
+
+import { useState } from "react";
 import { FaSearch } from "react-icons/fa";
+import { useSearch } from "../hooks";
 
 export default function SearchBar() {
-  const [search, updateSearch] = useState<string>("");
-  const [error, setError] = useState<string | null>(null);
+  const { updateSearchTerm, searchError } = useSearch()
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const [ searchTerm, setSearchTerm] = useState<string>("")
+
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    if (!event) return
     event.preventDefault();
-
-    if (search === "") {
-      setError("Your search is empty");
-      //TODO: MEJORAR EL MANEJO DE ERRORES
-      setTimeout(() => {
-        setError(null);
-      }, 1000);
-      return ;
-    }
     
-    return console.log(search);
-  };
+    if(!searchTerm || searchTerm === "") return
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const newQuery = event?.target.value;
-    if (newQuery === " ") return;
-    updateSearch(newQuery);
-
+    updateSearchTerm && updateSearchTerm(searchTerm);
   };
+ 
+// console.log(searchResults); 
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newQuery = event.currentTarget.value;
+    setSearchTerm(newQuery);
+  };
+  
+
 
   return (
     <form
@@ -36,7 +38,7 @@ export default function SearchBar() {
         className="outline-none w-full"
         type="text"
         name="query"
-        value={search}
+        value={searchTerm}
         onChange={handleChange}
       />
       <button
@@ -45,9 +47,9 @@ export default function SearchBar() {
       >
         <FaSearch />
       </button>
-      {error && (
+      {searchError && (
         <span className="absolute right-16  text-red-700 font-extralight">
-          {error}
+          {searchError}
         </span>
       )}
     </form>

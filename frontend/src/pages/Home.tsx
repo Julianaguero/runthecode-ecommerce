@@ -14,9 +14,9 @@ export default function Home() {
       </Helmet>
       <main className="overflow-hidden mx-auto max-w-[1900px]">
         <section>
-          <div className="w-screen h-[3rem] sm:h-full md:mb-20 mb-10 mx-auto max-w-[1900px] overflow-hidden">
+          <div className="w-screen h-[4rem] sm:h-full md:mb-20 mb-10 mx-auto max-w-[1900px] overflow-hidden">
             <video
-              className="w-11/12  h-full object-cover mx-auto"
+              className="w-10/12  h-full object-cover mx-auto"
               autoPlay
               loop
               typeof="video/mp4"

@@ -1,11 +1,15 @@
+import About from "./About";
 import Home from "./Home";
 import Shop from "./Shop";
-import About from "./About";
+import Search from "./Search";
+import ShoppingCart from "./ShoppingCart";
 import ProductPage from "./ProductPage";
 
 export {
-    Home,
-    Shop,
     About,
+    Home,
+    Search,
+    Shop,
+    ShoppingCart,
     ProductPage, 
 }

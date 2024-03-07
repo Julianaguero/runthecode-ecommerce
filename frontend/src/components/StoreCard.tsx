@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { storesLocationData } from "../lib/data"
+import { storesLocationData } from "../utils/data"
 import { motion, useScroll, useTransform } from "framer-motion";
 
 import { FaPhoneAlt } from "react-icons/fa";
