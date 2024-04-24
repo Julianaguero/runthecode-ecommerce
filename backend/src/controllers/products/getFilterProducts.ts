@@ -17,7 +17,6 @@ const getFilterProducts: RequestHandler = async (req, res, next) => {
      if(maxPriceFilter || minPriceFilter) filterParams.price = {$gte: minPriceFilter || 0, $lte: maxPriceFilter || 2000}
 
 
-    console.log(filterParams)
     try {
         const filteredProducts = await productModel.find(filterParams).exec()
 

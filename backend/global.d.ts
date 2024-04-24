@@ -7,3 +7,14 @@ declare global {
       }
     }
   }
+
+declare namespace Express {
+    export interface Request {
+      _id: string; 
+      name: string;
+      email: string;
+      password: string;
+      isAdmin: boolean;
+      token: string,
+    }
+  }

@@ -1,9 +1,14 @@
 import { Router, Request, Response } from "express";
+import { createUser } from "../controllers/users";
+import userModel from "../models/userModel";
 
 const router = Router();
 
-router.get("/users",( _req: Request, res: Response) => {
-    res.send("Hola desde usuario")
+router.get("/users", async ( _req: Request, res: Response) => {
+    const users = await userModel.find().exec();
+    res.status(200).json(users)
 })
+
+router.post("/user/signup", createUser);
 
 export default router
