@@ -2,6 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "GintoRounded_Medium";
+  src: url("assets/fonts/ABCGintoRounded-Medium-Trial.woff2") format("woff2");
+}
+@font-face {
+  font-family: "GintoRounded_MediumItalic";
+  src: url("assets/fonts/ABCGintoRounded-MediumItalic-Trial.woff2") format("woff2");
+}
+@font-face {
+  font-family: "GintoRounded_Light";
+  src: url("assets/fonts/ABCGintoRounded-Light-Trial.woff2") format("woff2");
+}
+@font-face {
+  font-family: "GintoRounded_LightItalic";
+  src: url("assets/fonts/ABCGintoRounded-LightItalic-Trial.woff2") format("woff2");
+}
+@font-face {
+  font-family: "GintoRounded_NordLight";
+  src: url("assets/fonts/ABCGintoRoundedNord-Light-Trial.woff2") format("woff2");
+}
+@font-face {
+  font-family: "GintoRounded_NordMediumItalic";
+  src: url("assets/fonts/ABCGintoRoundedNordCondensed-MediumItalic-Trial.woff2") format("woff2");
+}
+@font-face {
+  font-family: "GintoRounded_NordRegular";
+  src: url("assets/fonts/ABCGintoRoundedNordCondensed-Regular-Trial.woff") format("woff");
+}
+@font-face {
+  font-family: "GintoRounded_NordRegularItalic";
+  src: url("assets/fonts/ABCGintoRoundedNordCondensed-RegularItalic-Trial.woff") format("woff");
+}
+
 *{
   margin: 0;
   padding: 0;
@@ -40,6 +73,52 @@
     background-color: #0f0f0f;
     transform-origin: bottom;
   }
+
+  .font-ginto-medium {
+    font-family: "GintoRounded_Medium";
+    font-feature-settings: "ss02";
+    font-feature-settings: "ss03";
+  }
+  .font-ginto-medium-italic {
+    font-family: "GintoRounded_MediumItalic";
+    font-feature-settings: "ss02";
+    font-feature-settings: "ss03";
+  }
+  .font-ginto-light {
+    font-family: "GintoRounded_Light";
+    font-feature-settings: "ss02";
+    font-feature-settings: "ss03";
+  }
+  .font-ginto-light-italic {
+    font-family: "GintoRounded_LightItalic";
+    font-feature-settings: "ss02";
+    font-feature-settings: "ss03";
+  }
+  .font-ginto-nord-light {
+    font-family: "GintoRounded_NordLight";
+    font-feature-settings: "ss02";
+    font-feature-settings: "ss03";
+  }
+  .font-ginto-nord-medium-italic {
+    font-family: "GintoRounded_NordMediumItalic";
+    font-feature-settings: "ss02";
+    font-feature-settings: "ss03";
+  }
+
+  .font-ginto-nord-regular {
+    font-family: "GintoRounded_NordRegular";
+    font-feature-settings: "ss02";
+    font-feature-settings: "ss03";
+  }
+  .font-ginto-nord-regular-italic {
+    font-family: "GintoRounded_NordRegularItalic";
+    font-feature-settings: "ss02";
+    font-feature-settings: "ss03";
+  }
+
+  
+
+
 }
 
 /* 
