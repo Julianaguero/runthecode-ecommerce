@@ -1,5 +1,5 @@
 import { RequestHandler } from "express";
-import bcrypt from "bcryptjs"
+// import bcrypt from "bcryptjs"
 import { UserProps } from "../../types";
 import userModel from "../../models/userModel";
 import { generateToken } from "../../utils/generateToken";

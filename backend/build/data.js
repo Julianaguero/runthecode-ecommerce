@@ -1,6 +1,6 @@
+"use strict";
 // import { UserProps } from "./types";
 // import bcrypt from "bcryptjs"
-
 // export const sampleUsers: UserProps[] = [
 //     {
 //         name: "Joe",
