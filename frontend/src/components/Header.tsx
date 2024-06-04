@@ -35,7 +35,7 @@ export default function Header() {
               <li  className="group relative px-4 py-3">
                 <NavLink
                   to={link.path}
-                  className="group inherit font-medium text-lg  hover:font-bold group-active:text-[1rem] focus:font-bold transition-all ease-linear duration-100 "
+                  className="group inherit font-ginto-nord-regular text-lg  hover:font-bold group-active:text-[1rem] focus:font-bold transition-all ease-linear duration-100 "
                 >
                   {link.name}
 
