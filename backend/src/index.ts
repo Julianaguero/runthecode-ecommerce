@@ -15,7 +15,7 @@ const app = express();
 app.use(express.json());
 
 //CORS config
-const allowedOrigins = ["http://localhost:5174", "http://localhost:5173"]
+const allowedOrigins = ["http://localhost:5174", "http://localhost:5173", "https://runthecode-ecommerce.onrender.com/"]
 const options: cors.CorsOptions = {
     credentials: true,
     origin: allowedOrigins
