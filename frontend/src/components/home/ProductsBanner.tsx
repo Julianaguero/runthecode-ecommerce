@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import { FiltersContext } from "../../context/FiltersContext";
 import { ProductsProps } from "../../types";
 import ProductCard from "../shop/ProductCard";
@@ -10,13 +11,27 @@ export default function ProductsBanner() {
   const error = filtersContext?.error;
 
   return (
-    <section className="w-full mb-10 px-6">
-      <h2 className="px-10 text-title-h2 font-ginto-light ">You will <span className="font-ginto-nord-medium-italic">love</span></h2>
+    <section className="max-w-[1560px] mx-auto w-full mb-20 px-6">
+      <div className="flex flex-col gap-10 sm:flex-row justify-between items-end mb-20 px-10 ">
+        <h2 className="text-title-h2 font-ginto-light ">
+          You will <span className="font-ginto-nord-medium-italic">love</span>{" "}
+          it
+        </h2>
+        <Link
+          to="/shop"
+          className="relative font-ginto-nord-bold-italic hover:text-lightviolet hover:font-outline-2-yellow pb-4 after:content-asset2"
+        >
+          EXPLORE MORE
+        </Link>
+      </div>
 
-      <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 xl:gap-8 mx-auto px-4  [&>*:nth-child(odd)]:content-end [&>*:nth-child(even)]:content-start h-[29rem] xl:h-[31rem]">
+      <ul className="grid grid-cols-2 md:grid-cols-4 gap-4 xl:gap-4 mx-auto px-4 [&>*:nth-child(odd)]:content-end [&>*:nth-child(even)]:content-start sm:h-[29rem] xl:h-[31rem]">
         {error && ""}
-        {filteredProducts.slice(7,11).map((product: ProductsProps) => (
-          <li key={product._id} className="w-[15rem] xl:w-[18rem] mx-auto hover:scale-[.98] transition-all duration-150" >
+        {filteredProducts.slice(7, 11).map((product: ProductsProps) => (
+          <li
+            key={product._id}
+            className="max-w-[16rem] xl:max-w-[18rem] mx-auto hover:scale-[.98] transition-all duration-150"
+          >
             <ProductCard product={product} />
           </li>
         ))}
