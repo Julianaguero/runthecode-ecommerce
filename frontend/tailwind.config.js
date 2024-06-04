@@ -19,6 +19,9 @@ export default {
       "blueindigo": "#123C64ff",
       "prussian": "#1D3649ff",
       "isabelline": "#F4F0ECff",
+      "violet": "#772dff",
+      "lightviolet": "#9962fc",
+      "yellowbright": "#ffcb00",
     },
     extend: {
       keyframes: {
@@ -29,11 +32,15 @@ export default {
           "75%": { transform: "translate(-5px, 5px) rotate(-5deg)" },
           "100%": { transform: "translate(0, 0) rotate(0deg)" },
         },
+        scroll: {
+          "to": {transform: "translate(-50%)"}
+        }
       },
       animation: {
         tiltShaking: "tiltShaking 300ms linear ",
+        scroll: "scroll 20s linear infinite"
       },
-      
+
     },
   },
   plugins: [],

@@ -8,15 +8,14 @@ import {
   ErrorCard,
   Breadcrumbs,
 } from "../components/index";
-import { useFetchProducts } from "../hooks/index";
 import { FiltersContext } from "../context/FiltersContext";
-import { type BreadcrumbsProps, type ProductsProps } from "../types";
+import { type BreadcrumbsProps } from "../types";
 
 export default function Shop() {
-  const { isLoading } = useFetchProducts<ProductsProps>();
   const filtersContext = useContext(FiltersContext);
   // Comprobación de nulidad antes de acceder a filteredProducts
   const filteredProducts = filtersContext?.productsToRender;
+  const isLoading = filtersContext?.isLoading;
   const error = filtersContext?.error;
 
   const breadcrumbPath: BreadcrumbsProps[] = [{ name: "Shop", url: "/shop" }];
@@ -33,7 +32,7 @@ export default function Shop() {
         <aside>
           <Breadcrumbs breadcrumbPath={breadcrumbPath} />
         </aside>
-        <section className="w-full mx-auto flex flex-col justify-start sm:gap-2">
+        <section className="w-full mx-auto mb-10 flex flex-col justify-start sm:gap-2">
           <aside className="flex flex-row items-center justify-start gap-6 w-full px-6 py-2">
               <FiltersBar />
           </aside>

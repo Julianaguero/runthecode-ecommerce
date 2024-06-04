@@ -13,13 +13,13 @@ export default function ShoppingCart() {
   ];
 
   return (
-    <>
+    <InnerAnimation>
       <Helmet>
         <title>Cart</title>
         <meta name="description" content="My shoppin cart." />
         <link rel="canonical" href="/cart" />
       </Helmet>
-      <main className="max-w-[1560px] mx-auto">
+      <main className="max-w-[1560px] mx-auto mb-10">
         <aside>
           <Breadcrumbs breadcrumbPath={breadcrumbPath} />
         </aside>
@@ -54,6 +54,6 @@ export default function ShoppingCart() {
           </aside>
         </div>
       </main>
-    </>
+    </InnerAnimation>
   );
 }

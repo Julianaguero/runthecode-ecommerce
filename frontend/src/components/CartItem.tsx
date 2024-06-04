@@ -4,7 +4,7 @@ import {
   calculateItemTotalPrice,
   priceToLocaleString,
 } from "../utils/cartUtils";
-import IconDeleteBinLine from "./Icons/IconDeleteBinLine";
+import DeleteBinLineIcon from "./Icons/DeleteBinLineIcon";
 
 export default function CartItem({
   product,
@@ -53,7 +53,7 @@ export default function CartItem({
             className=" ml-3  hover:text-red-600 text-[clamp(0.8rem,2.5vw,1.2rem)] active:scale-95"
             onClick={removeItemFromCart}
           >
-            <IconDeleteBinLine />
+            <DeleteBinLineIcon />
           </button>
         </div>
       </div>

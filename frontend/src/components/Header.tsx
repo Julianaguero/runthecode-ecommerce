@@ -8,7 +8,9 @@ import FramerMagnetic from "./FramerMagnetic";
 export default function Header() {
   return (
     <motion.header 
-      className="sticky top-0 w-full max-w-[1560px] mx-auto flex items-center justify-between h-20 p-5 z-50 bg-white/90"
+      className="sticky top-0 w-full max-w-[1560px] mx-auto 
+      md:flex md:items-center md:justify-between md:h-20 p-5 z-50 bg-white/90 
+      grid grid-cols-2 items-center"
       initial={{y: -100, opacity: 0}}
       animate={{y: 0, opacity: 1}}
       transition={{ 
@@ -16,7 +18,7 @@ export default function Header() {
         duration: 0.4,
        }}
     >
-      <div className="h-12 w-auto">
+      <div className="h-12 w-40 order-1">
         {/* CAMBIAR DIV POR LINK para produccion */}
         <div className="h-12" >
           <img
@@ -27,7 +29,7 @@ export default function Header() {
           />
         </div>
       </div>
-      <nav className="flex flex-1 w-1/2  justify-center ">
+      <nav className="flex flex-1 justify-center col-span-2 order-3 md:order-2">
         <ul className="flex gap-8">
           {links.map((link) => (
             
@@ -46,15 +48,16 @@ export default function Header() {
           ))}
         </ul>
       </nav>
-      <nav className="flex gap-5">
+      <nav className="w-40 flex  justify-end gap-5 order-2 md:order-3 place-self-end">
         <NavLink 
           to="/"
           aria-label="user login"
+          className=""
         >
           <HiOutlineUser className="w-6 h-6 hover:text-persimmon" />
         </NavLink>
         <div>
-        <Cart />
+          <Cart />
 
         </div>
       </nav>

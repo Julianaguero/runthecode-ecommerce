@@ -1,5 +1,6 @@
 import ActionButton from "./Buttons/ActionButton";
 import BrandFilter from "./BrandFilter";
+import BrandWrapper from "./home/BrandWrapper";
 import Breadcrumbs from "./shop/Breadcrumbs";
 import Cart from "./Cart";
 import CartButton from "./Buttons/CartButton";
@@ -23,11 +24,15 @@ import Rating from "./shop/Rating";
 import SearchBar from "./SearchBar";
 import Spinner from "./Spinner";
 import StoreCard from "./StoreCard";
+import Footer from "./Footer";
+import BrandsBanner from "./home/BrandsBanner";
 
 
 export { 
     ActionButton,
     BrandFilter,
+    BrandsBanner,
+    BrandWrapper,
     Breadcrumbs,
     Cart,
     CartButton,
@@ -35,6 +40,7 @@ export {
     CartItemsList,
     ErrorCard,
     FiltersBar,
+    Footer,
     FramerMagnetic,
     Header,
     HeroBanner,

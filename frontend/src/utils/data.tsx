@@ -65,15 +65,15 @@ export const brandList = [
 
   },
   {
-    name: "Puma",
-    path: "shop/brand/puma",
-    backImg: pumaImg,
-    brandImg: pumaLogo,
-  },
-  {
     name: "New Balance",
     path: "shop/brand/newbalance",
     backImg: newBalanceImg,
     brandImg: newBalanceLogo,
+  },
+  {
+    name: "Puma",
+    path: "shop/brand/puma",
+    backImg: pumaImg,
+    brandImg: pumaLogo,
   },
 ] as const;

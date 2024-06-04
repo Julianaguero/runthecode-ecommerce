@@ -2,9 +2,9 @@ import { useRef } from "react";
 import { storesLocationData } from "../utils/data"
 import { motion, useScroll, useTransform } from "framer-motion";
 
+import { ClockIcon, LocationIcon } from "../components/Icons"
+
 import { FaPhoneAlt } from "react-icons/fa";
-import { FaLocationDot } from "react-icons/fa6";
-import { MdOutlineAccessTimeFilled } from "react-icons/md";
 
 
 type StoreLocationProps = (typeof storesLocationData)[number]
@@ -30,9 +30,9 @@ export default function StoreCard({ name, address, phoneNumber, time, imgUrl}: S
         <div className="flex  flex-col items-start md:w-1/2 h-full tracking-widest leading-7 md:pl-[2rem] lg:pl-[4rem] py-[4rem] sm:px-0 px-6">
             <h3 className="font-bold  text-[clamp(1.3rem,75%,1.5rem)] mb-4 text-prussian">{name}</h3>
             <ul className="md:text-[0.8rem] lg:text-[1.1rem]">
-                <li className="flex items-center gap-2 "><FaLocationDot className="text-persimmon text-[1.2rem]"/>Address: {address}</li>
+                <li className="flex items-center gap-2 "><LocationIcon className="text-persimmon text-[1.2rem]"/>Address: {address}</li>
                 <li className="flex items-center gap-3 "><FaPhoneAlt className="text-persimmon text-[1rem]"/> Phone: {phoneNumber}</li>
-                <li className="flex items-center gap-2 "><MdOutlineAccessTimeFilled className="text-persimmon text-[1.3rem]"/>{time}</li>
+                <li className="flex items-center gap-2 "><ClockIcon className="text-persimmon text-[1.3rem]"/>{time}</li>
             </ul>
         </div>
         <div className="flex flex-1 md:w-1/2">

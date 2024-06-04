@@ -1,9 +1,9 @@
 import { FaRegStar, FaStar, FaStarHalfAlt } from "react-icons/fa";
-import { ProductsPropsRating } from "../types";
+import { ProductsPropsRating } from "../../types";
 
 export default function Rating({ rating, numReviews }: ProductsPropsRating) {
   return (
-    <div className="flex items-center gap-2 py-2">
+    <div className="hidden sm:flex items-center gap-2 py-2">
       <div className="flex items-center">
         <span>
           <i>

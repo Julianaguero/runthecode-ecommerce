@@ -44,7 +44,7 @@ export default function ProductPage() {
         {/* //TODO: BREADCRUMS BAR should hide on scroll-down and show on scroll-up for mobile */}
         <Breadcrumbs breadcrumbPath={breadcrumbPath} />
 
-        <section className="grid md:grid-cols-2 max-w-[1560px] mx-auto justify-center items-start top-[6rem] px-6">
+        <section className="grid md:grid-cols-2 max-w-[1560px] mx-auto mb-10 justify-center items-start top-[6rem] px-6">
           <div className="px-2">
             <img src={product.img} alt={product.name} />
           </div>

@@ -23,13 +23,7 @@ export default function About() {
           transition={{ delay: 0.8 }}
         >
           <p className="flex  flex-col items-start md:w-1/2 h-full tracking-widest leading-7 font-300 md:px-[2rem] lg:px-[4rem] py-[4rem] sm:px-[2rem] px-6 text-[clamp(0.8rem,0.34vw+0.96rem,1.1rem)]">
-            Somos runthecode, una tienda que nació hace un año con la intención
-            de ofrecer productos de alta calidad y estilo exclusivo a sus
-            clientes. Inspirados en las grandes tiendas europeas y
-            norteamericanas, intentamos destacar por variedad de modelos y
-            precios competitivos en el mercado. Con un equipo de expertos en
-            moda y tendencias, hemos logrado posicionarnos como una de las
-            favoritas entre los amantes de los sneakers en la ciudad.
+          Born just a year ago, Runthecode is a sneaker store that's quickly become a go-to destination for style-conscious individuals seeking high-quality kicks. Inspired by the iconic sneaker hubs of Europe and North America, we stand out from the crowd with our diverse range of models and competitive prices. Our team of fashion and trend experts has propelled us to become a favorite among sneaker enthusiasts in the city.
           </p>
           <div className="flex flex-1 md:w-1/2 h-full z-0">
             <img

@@ -53,7 +53,7 @@ export type VariantsProps = {
 };
 
 // Context Provider Types
-export type FiltersContextProps = Omit<FilteredProductProps, "filteredProducts"> & { productsToRender: ProductsProps[] };
+export type FiltersContextProps = Omit<FilteredProductProps, "filteredProducts"> & { productsToRender: ProductsProps[], isLoading: boolean };
 
 export type FilterContextProviderProps = {
   children: React.ReactNode;

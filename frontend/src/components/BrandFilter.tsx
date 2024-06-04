@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { type FilterProps } from "../types";
 import { useFetchBrands } from "../hooks";
 import {
-  IconArrowDownDropCircle,
-  IconArrowDownDropCircleOutline,
+  ArrowDownDropCircleIcon,
+  ArrowDownDropCircleOutlineIcon,
 } from "./Icons";
 
 type BrandFilterProps = {
@@ -46,17 +46,17 @@ export default function BrandFilter({ changeFilters }: BrandFilterProps) {
   return (
     <div className="w-40 relative">
       <button
-        className={` py-[0.65em] px-4 hover:border-persimmon/70 border-2 flex flex-row items-center justify-center gap-4 text-sm ${
-          isOpen ? " bg-persimmon/80 text-white outline-none" : " border-prussian/80"
+        className={` py-[0.65em] px-4 hover:border-violet/70 border-2 flex flex-row items-center justify-center gap-4 text-sm ${
+          isOpen ? " bg-violet/80 text-white outline-none" : " border-prussian/80"
         }
         `}
         onClick={() => setIsOpen(!isOpen)}
       >
         Brands{" "}
         {isOpen ? (
-          <IconArrowDownDropCircle />
+          <ArrowDownDropCircleIcon />
         ) : (
-          <IconArrowDownDropCircleOutline />
+          <ArrowDownDropCircleOutlineIcon />
         )}
       </button>
       {isOpen && (
