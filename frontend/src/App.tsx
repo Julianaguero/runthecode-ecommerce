@@ -1,9 +1,9 @@
 import { Routes, Route, useLocation } from "react-router-dom";
 import CartProvider from "./context/CartContext";
-import Header from "./components/Header";
 import { ShoppingCart, ProductPage, Search } from "./pages/index";
 import { AnimatePresence } from "framer-motion";
 import { links } from "./utils/data";
+import { Header, Footer } from "./components";
 
 
 function App() {
@@ -24,7 +24,7 @@ function App() {
           <Route path="search" element={<Search />} />
         </Routes>
       </AnimatePresence>
-       
+      <Footer />
     </CartProvider>
   );
 }
