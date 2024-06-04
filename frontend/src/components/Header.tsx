@@ -1,9 +1,11 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Cart } from ".";
 import { links } from "../utils/data";
 import { HiOutlineUser } from "react-icons/hi";
 import FramerMagnetic from "./FramerMagnetic";
+
+import logo from "../assets/logo.png"
 
 export default function Header() {
   return (
@@ -20,14 +22,16 @@ export default function Header() {
     >
       <div className="h-12 w-40 order-1">
         {/* CAMBIAR DIV POR LINK para produccion */}
-        <div className="h-12" >
+        <Link 
+        to="/"
+         className="h-12" >
           <img
             className="h-12"
             typeof="svg"
-            src="src/assets/logo.svg"
+            src={logo}
             alt="runthecode sneaker store"
           />
-        </div>
+        </Link>
       </div>
       <nav className="flex flex-1 justify-center col-span-2 order-3 md:order-2">
         <ul className="flex gap-8">
@@ -52,7 +56,6 @@ export default function Header() {
         <NavLink 
           to="/"
           aria-label="user login"
-          className=""
         >
           <HiOutlineUser className="w-6 h-6 hover:text-persimmon" />
         </NavLink>
