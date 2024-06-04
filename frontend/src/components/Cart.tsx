@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { CartButton, CartItemsList, LinkButtonActive } from ".";
 import { useCart } from "../hooks";
 import { calculateTotalPrice } from "../utils/cartUtils";
