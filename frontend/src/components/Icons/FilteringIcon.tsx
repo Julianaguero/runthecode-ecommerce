@@ -1,5 +1,5 @@
 
-function IconFiltering(props: React.SVGProps<SVGSVGElement>) {
+function FilteringIcon(props: React.SVGProps<SVGSVGElement>) {
     return (
       <svg
         viewBox="0 0 21 21"
@@ -21,4 +21,4 @@ function IconFiltering(props: React.SVGProps<SVGSVGElement>) {
     );
   }
   
-  export default IconFiltering;
+  export default FilteringIcon;

@@ -1,9 +1,9 @@
-type IconDeleteBinLineProps = {
+type DeleteBinLineIconProps = {
   className?: string;
 
 }
 
-function IconDeleteBinLine(props: IconDeleteBinLineProps) {
+function DeleteBinLineIcon(props: DeleteBinLineIconProps) {
     return (
       <svg
         viewBox="0 0 24 24"
@@ -18,5 +18,5 @@ function IconDeleteBinLine(props: IconDeleteBinLineProps) {
     );
   }
   
-  export default IconDeleteBinLine;
+  export default DeleteBinLineIcon;
   

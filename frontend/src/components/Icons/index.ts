@@ -1,13 +1,22 @@
-import IconArrowDownDropCircleOutline from "./IconArrowDownDropCircleOutline";
-import IconArrowDownDropCircle from "./IconArrowDownDropCircle";
-import IconDeleteBinLine from "./IconDeleteBinLine";
-import IconFiltering from "./IconFiltering";
+import ArrowDownDropCircleOutlineIcon from "./ArrowDownDropCircleOutlineIcon";
+import ArrowDownDropCircleIcon from "./ArrowDownDropCircleIcon";
+import ClockIcon from "./ClockIcon";
+import DeleteBinLineIcon from "./DeleteBinLineIcon";
+import FilteringIcon from "./FilteringIcon";
+import LocationIcon from "./LocationIcon";
+import HomeIcon from "./HomeIcon";
+import RightArrowIcon from "./RightArrowIcon";
 
 
 
 export {
-    IconArrowDownDropCircleOutline,
-    IconArrowDownDropCircle,
-    IconDeleteBinLine,
-    IconFiltering
+    ArrowDownDropCircleOutlineIcon,
+    ArrowDownDropCircleIcon,
+    ClockIcon,
+    DeleteBinLineIcon,
+    FilteringIcon,
+    HomeIcon,
+    LocationIcon,
+    RightArrowIcon,
+
 }

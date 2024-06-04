@@ -1,5 +1,5 @@
 
-function IconArrowDownDropCircleOutline(props: React.SVGProps<SVGSVGElement>) {
+function ArrowDownDropCircleOutlineIcon(props: React.SVGProps<SVGSVGElement>) {
     return (
       <svg
         viewBox="0 0 24 24"
@@ -13,5 +13,5 @@ function IconArrowDownDropCircleOutline(props: React.SVGProps<SVGSVGElement>) {
     );
   }
   
-  export default IconArrowDownDropCircleOutline;
+  export default ArrowDownDropCircleOutlineIcon;
   
