@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { storesLocationData } from "../utils/data"
 import { motion, useScroll, useTransform } from "framer-motion";
 
-import { ClockIcon, LocationIcon, PhoneIcon } from "./icons/index"
+import { ClockIcon, LocationIcon, PhoneIcon } from "./icons/"
 
 
 

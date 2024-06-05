@@ -1,5 +1,5 @@
 import { ProductsPropsRating } from "../../types";
-import { StarOutlineIcon, StarHalfOutlineIcon, StarFullOutlineIcon } from "../icons/index";
+import { StarOutlineIcon, StarHalfOutlineIcon, StarFullOutlineIcon } from "../icons/";
 
 export default function Rating({ rating, numReviews }: ProductsPropsRating) {
   return (
