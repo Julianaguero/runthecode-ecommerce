@@ -10,7 +10,12 @@ lerna-debug.log*
 node_modules
 dist
 dist-ssr
+
+# Local environment variables
+.env.local
+.env.*.local
 *.local
+*.production
 
 # Editor directories and files
 .vscode/*
@@ -21,4 +26,15 @@ dist-ssr
 *.ntvs*
 *.njsproj
 *.sln
+*.swp
 *.sw?
+
+# Vite cache
+.vite/
+
+# IDE specific files
+.vscode/
+.idea/
+
+# Typescript build cache
+*.tsbuildinfo
