@@ -33,7 +33,7 @@ app.listen(PORT, () => {
 index_2.default.connectToDatabase();
 app.get('*', (_req, res) => res.sendFile(path_1.default.join(__dirname, '../../frontend/dist/index.html')));
 //initial error handler // initial error middlewares
-app.all("*", (_req, _res, next) => {
+app.all("/*", (_req, _res, next) => {
     const error = new CustomError_1.default("Endpoint not found", 404, "INVALID_URL");
     next(error);
 });

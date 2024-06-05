@@ -32,6 +32,8 @@ export default function Shop() {
     
   };
 
+
+  console.log("checkErrors: ");
   console.log(checkErrors());
   const breadcrumbPath: BreadcrumbsProps[] = [{ name: "Shop", url: "/shop" }];
 

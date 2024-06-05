@@ -1,15 +1,19 @@
 import { type ProductsProps, type FilterProps } from "../types";
 
+const BASE_URL = process.env.NODE_ENV === 'development'  ? 'http://localhost:3000' : import.meta.env.BASE_URL
 
 
 const getFilterProducts = async ({ brand, minPrice, maxPrice }: FilterProps): Promise<ProductsProps[]> => {
-    const url = new URL(`${process.env.NODE_ENV === 'development' ? 'http://localhost:3000/' : '/'}api/filter`)
+    const url = new URL("/api/filter", BASE_URL)
+    console.log("getfilterPRodcuts: url")
+    console.log(url)
     if (brand) brand.map(singleBrand => (
         url.searchParams.append("brand", singleBrand)
     ));
     if(minPrice && minPrice > 0) url.searchParams.append("minPrice", String(minPrice))
     if(maxPrice && maxPrice < 2000) url.searchParams.append("maxPrice", String(maxPrice))
-
+        console.log("getfilterPRodcuts: url + params")
+    console.log(url)
     try {
         const response = await fetch(url, {
             method: "GET",
