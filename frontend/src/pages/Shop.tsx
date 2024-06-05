@@ -35,6 +35,9 @@ export default function Shop() {
 
   console.log("checkErrors: ");
   console.log(checkErrors());
+  console.log("checkErrors: length");
+  console.log(checkErrors().length);
+
   const breadcrumbPath: BreadcrumbsProps[] = [{ name: "Shop", url: "/shop" }];
 
   return (
@@ -54,8 +57,8 @@ export default function Shop() {
               <FiltersBar />
           </aside>
           {isLoading && <Spinner />}
-          {checkErrors.length > 0  && <ErrorCard error={checkErrors()} />}
-          {filteredProducts && checkErrors.length === 0  && (
+          {checkErrors().length > 0  && <ErrorCard error={checkErrors()} />}
+          {filteredProducts && checkErrors().length === 0  && (
             <Products filteredProducts={filteredProducts} />
           )}
         </section>
