@@ -22,7 +22,7 @@ export default function Shop() {
   const checkErrors = (): string => {
     let error = "";
 
-    if(fetchProductsError && fetchProductsError) {
+    if(fetchProductsError !== null && fetchProductsError) {
       return error = fetchProductsError;
     } else if(filteringError !== null && filteringError) {
       return error = filteringError;

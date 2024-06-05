@@ -5,6 +5,8 @@ import FilteringIcon from "./Icons/FilteringIcon";
 
 export default function FiltersBar() {
   const { setFilters } = useContext(FiltersContext);
+
+  
   
   return (
     <>

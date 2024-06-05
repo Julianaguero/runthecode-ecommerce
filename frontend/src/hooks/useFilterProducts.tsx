@@ -7,6 +7,7 @@ import {
 import getFilterProducts from "../services/getFilterProducts";
 
 function useFilterProducts(): FilteredProductProps {
+ 
   const [filteredProducts, setFilteredProducts] =
     useState<ProductsProps[]>([]);
 
@@ -16,12 +17,18 @@ function useFilterProducts(): FilteredProductProps {
     maxPrice: 2000,
   });
 
+  console.log("useFilters:")
+  console.log(filters)
+  console.log("usefilters - filteredproducts:")
+  console.log(filteredProducts)
+
   const [filteringError, setFilteringError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchFilterProducts = async () => {
       try {
         const newProducts = await getFilterProducts(filters);
+        console.log("fetch filter results"+" "+ newProducts)
         setFilteredProducts(newProducts || []);
         setFilteringError(null)
       } catch (error) {
