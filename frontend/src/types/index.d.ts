@@ -43,7 +43,7 @@ export type FilterProps = {
 export type FilteredProductProps = {
   filteredProducts: ProductsProps[];
   setFilters: React.Dispatch<React.SetStateAction<FilterProps>>;
-  error: string | null;
+  filteringError: string | null;
 };
 
 export type VariantsProps = {
@@ -53,7 +53,12 @@ export type VariantsProps = {
 };
 
 // Context Provider Types
-export type FiltersContextProps = Omit<FilteredProductProps, "filteredProducts"> & { productsToRender: ProductsProps[], isLoading: boolean };
+export type FiltersContextProps = Omit<FilteredProductProps, "filteredProducts"> & { 
+  productsToRender: ProductsProps[], 
+  isLoading: boolean,
+  error?: string | null,
+  filteringError?: string | null,
+ };
 
 export type FilterContextProviderProps = {
   children: React.ReactNode;

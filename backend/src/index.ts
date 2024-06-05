@@ -41,7 +41,7 @@ app.get('*', (_req: Request, res: Response) =>
 
 //initial error handler // initial error middlewares
 
-app.all("*", (_req: Request, _res: Response, next: NextFunction) => {
+app.all("/*", (_req: Request, _res: Response, next: NextFunction) => {
     const error = new CustomError("Endpoint not found", 404, "INVALID_URL")
   
     next(error)
