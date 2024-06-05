@@ -16,20 +16,20 @@ function useFilterProducts(): FilteredProductProps {
     maxPrice: 2000,
   });
 
-  const [error, setError] = useState<string | null>(null);
+  const [filteringError, setFilteringError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchFilterProducts = async () => {
       try {
         const newProducts = await getFilterProducts(filters);
         setFilteredProducts(newProducts || []);
-        setError(null)
+        setFilteringError(null)
       } catch (error) {
         //TODO: improve error handler
         if (error instanceof Error) {
-          setError("No products found");
+          setFilteringError("No products found");
         } else {
-          setError("An unknown error occurred");
+          setFilteringError("An unknown error occurred");
         }
         setFilteredProducts([]);
       }
@@ -38,7 +38,7 @@ function useFilterProducts(): FilteredProductProps {
     fetchFilterProducts();
   }, [filters]);
 
-  return { filteredProducts, setFilters, error };
+  return { filteredProducts, setFilters, filteringError };
 }
 
 export default useFilterProducts;

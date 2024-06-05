@@ -16,9 +16,20 @@ export default function Shop() {
   // Comprobación de nulidad antes de acceder a filteredProducts
   const filteredProducts = filtersContext?.productsToRender;
   const isLoading = filtersContext?.isLoading;
-  const error = filtersContext?.error;
-  console.log(error)
+  const fetchProductsError = filtersContext?.error;
+  const filteringError = filtersContext?.filteringError;
 
+  const checkErrors = (): string => {
+    let error = "";
+
+    if(fetchProductsError !== null && fetchProductsError) {
+      return error = fetchProductsError;
+    } else if(filteringError !== null && filteringError) {
+      return error = filteringError;
+    }
+    
+    return error
+  };
   const breadcrumbPath: BreadcrumbsProps[] = [{ name: "Shop", url: "/shop" }];
 
   return (
@@ -38,8 +49,8 @@ export default function Shop() {
               <FiltersBar />
           </aside>
           {isLoading && <Spinner />}
-          {error && <ErrorCard error={error} />}
-          {filteredProducts && (
+          {checkErrors()  && <ErrorCard error={checkErrors()} />}
+          {filteredProducts && !checkErrors() && (
             <Products filteredProducts={filteredProducts} />
           )}
         </section>
