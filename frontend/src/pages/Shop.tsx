@@ -17,6 +17,7 @@ export default function Shop() {
   const filteredProducts = filtersContext?.productsToRender;
   const isLoading = filtersContext?.isLoading;
   const error = filtersContext?.error;
+  console.log(error)
 
   const breadcrumbPath: BreadcrumbsProps[] = [{ name: "Shop", url: "/shop" }];
 
