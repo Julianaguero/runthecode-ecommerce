@@ -9,14 +9,14 @@ const cors_1 = __importDefault(require("cors"));
 const path_1 = __importDefault(require("path"));
 const index_1 = __importDefault(require("./routes/index"));
 const index_2 = __importDefault(require("./db/index"));
-// import CustomError from "./error/CustomError";
+const CustomError_1 = __importDefault(require("./error/CustomError"));
 const globalErrorHandler_1 = __importDefault(require("./middlewares/globalErrorHandler"));
 dotenv_1.default.config();
 const PORT = parseInt((process.env.PORT || '3005'), 10);
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
 //CORS config
-const allowedOrigins = ["http://localhost:5174", "http://localhost:5173"];
+const allowedOrigins = ["http://localhost:5174", "http://localhost:5173", "https://runthecode-ecommerce.onrender.com/"];
 const options = {
     credentials: true,
     origin: allowedOrigins
@@ -33,8 +33,8 @@ app.listen(PORT, () => {
 index_2.default.connectToDatabase();
 app.get('*', (_req, res) => res.sendFile(path_1.default.join(__dirname, '../../frontend/dist/index.html')));
 //initial error handler // initial error middlewares
-// app.all("*", (_req: Request, _res: Response, next: NextFunction) => {
-//     const error = new CustomError("Endpoint not found", 404, "INVALID_URL")
-//     next(error)
-//   });
+app.all("*", (_req, _res, next) => {
+    const error = new CustomError_1.default("Endpoint not found", 404, "INVALID_URL");
+    next(error);
+});
 app.use(globalErrorHandler_1.default);
