@@ -1,6 +1,8 @@
 
+const BASE_URL = import.meta.env.VITE_BASE_URL
+
 async function getBrands<U>(urlParam?: string): Promise<U> {
-  let url: string = `${process.env.NODE_ENV === 'development' ? 'http://localhost:3000/' : '/'}api/collections/`;
+  let url: string = `${BASE_URL}/collections/`;
   //check if we search a brand and we add it to the url
   if (urlParam && urlParam !== "") url = `${process.env.NODE_ENV === 'development' ? 'http://localhost:3000/' : '/'}api/collections/${urlParam}`;
 

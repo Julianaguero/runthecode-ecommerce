@@ -1,11 +1,14 @@
 import { ProductsProps } from "../types";
 
-const getSearch = async (searchParam?: string): Promise<ProductsProps[]>=> {
-    
+const BASE_URL = import.meta.env.VITE_BASE_URL
+
+
+const getSearch = async (searchParam?: string): Promise<ProductsProps[]> => {
+
     try {
-        let url: string = `${process.env.NODE_ENV === 'development' ? 'http://localhost:3000/' : '/'}api/search/`
-    
-        if(searchParam) url= `${process.env.NODE_ENV === 'development' ? 'http://localhost:3000/' : '/'}api/search/${searchParam}`
+        let url: string = `${BASE_URL}/search/`
+
+        if (searchParam) url = `${BASE_URL}/search/${searchParam}`
 
         const response: Response = await fetch(url, {
             method: "GET",

@@ -1,13 +1,14 @@
 // const API_URL = "https://jaguero.pythonanywhere.com/runthecode/"
 
+const BASE_URL = import.meta.env.VITE_BASE_URL
 
 
 async function getProducts<T>(urlParams?: string): Promise<T> {
 
-    let url: string = `${process.env.NODE_ENV === 'development' ? 'http://localhost:3000/' : '/'}api/products/`;
+    let url: string = `${BASE_URL}/products/`;
 
     //check if we search a prodId and we add it to the url
-    if (urlParams) url = `${process.env.NODE_ENV === 'development' ? 'http://localhost:3000/' : '/'}api/products/${urlParams}`;
+    if (urlParams) url = `${BASE_URL}/products/${urlParams}`;
 
     try {
         const response: Response = await fetch(url, {
