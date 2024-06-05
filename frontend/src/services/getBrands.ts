@@ -1,8 +1,8 @@
 
 async function getBrands<U>(urlParam?: string): Promise<U> {
-  let url: string = `${process.env.NODE_ENV === 'development' ? 'http://localhost:3000/' : '/'}collections/`;
+  let url: string = `${process.env.NODE_ENV === 'development' ? 'http://localhost:3000/' : '/'}api/collections/`;
   //check if we search a brand and we add it to the url
-  if (urlParam && urlParam !== "") url = `${process.env.NODE_ENV === 'development' ? 'http://localhost:3000/' : '/'}collections/${urlParam}`;
+  if (urlParam && urlParam !== "") url = `${process.env.NODE_ENV === 'development' ? 'http://localhost:3000/' : '/'}api/collections/${urlParam}`;
 
   try {
     const response = await fetch(url, {

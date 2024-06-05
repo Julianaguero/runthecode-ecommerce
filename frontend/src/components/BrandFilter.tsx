@@ -61,7 +61,7 @@ export default function BrandFilter({ changeFilters }: BrandFilterProps) {
       </button>
       {isOpen && (
         <ul className="absolute border-2 border-prussian/60 top-12 left-0 bg-white z-10 pr-10 pl-2 w-48 py-2 shadow-xl">
-          {brands.map((brand) => (
+          {brands && brands.map((brand) => (
             <li
               key={brand}
               className="flex gap-2 items-center justify-start w-full cursor-pointer"
