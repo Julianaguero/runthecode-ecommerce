@@ -1,5 +1,4 @@
 import { defineConfig, Plugin } from 'vite'
-import './env';
 import react from '@vitejs/plugin-react-swc'
 
 
