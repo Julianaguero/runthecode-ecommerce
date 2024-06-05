@@ -2,7 +2,7 @@
 // que el handleSubmit redirija a /search y muestre los resultados de la busqueda.
 
 import { useState } from "react";
-import { FaSearch } from "react-icons/fa";
+import { SearchIcon } from "./icons/index";
 import { useSearch } from "../hooks";
 
 export default function SearchBar() {
@@ -45,7 +45,7 @@ export default function SearchBar() {
         className="absolute right-2 bg-blueindigo h-10 w-10 text-white flex items-center justify-center rounded-full"
         type="submit"
       >
-        <FaSearch />
+        <SearchIcon />
       </button>
       {searchError && (
         <span className="absolute right-16  text-red-700 font-extralight">

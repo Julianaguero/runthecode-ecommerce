@@ -2,9 +2,8 @@ import { useRef } from "react";
 import { storesLocationData } from "../utils/data"
 import { motion, useScroll, useTransform } from "framer-motion";
 
-import { ClockIcon, LocationIcon } from "../components/Icons"
+import { ClockIcon, LocationIcon, PhoneIcon } from "./icons"
 
-import { FaPhoneAlt } from "react-icons/fa";
 
 
 type StoreLocationProps = (typeof storesLocationData)[number]
@@ -31,7 +30,7 @@ export default function StoreCard({ name, address, phoneNumber, time, imgUrl}: S
             <h3 className="font-bold  text-[clamp(1.3rem,75%,1.5rem)] mb-4 text-prussian">{name}</h3>
             <ul className="md:text-[0.8rem] lg:text-[1.1rem]">
                 <li className="flex items-center gap-2 "><LocationIcon className="text-persimmon text-[1.2rem]"/>Address: {address}</li>
-                <li className="flex items-center gap-3 "><FaPhoneAlt className="text-persimmon text-[1rem]"/> Phone: {phoneNumber}</li>
+                <li className="flex items-center gap-3 "><PhoneIcon className="text-persimmon text-[1rem]"/> Phone: {phoneNumber}</li>
                 <li className="flex items-center gap-2 "><ClockIcon className="text-persimmon text-[1.3rem]"/>{time}</li>
             </ul>
         </div>

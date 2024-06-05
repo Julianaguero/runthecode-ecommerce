@@ -15,7 +15,7 @@ export default function useFetchBrands(): FetchBrandsProps {
         if (!uniqueBrands) throw new Error("Error fetching brands data");
         setBrands(uniqueBrands || []);
         setError(null); 
-         console.log("fetch")
+         console.log("fetch brands")
 
       } catch (error) {
         if (error instanceof Error) {

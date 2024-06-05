@@ -7,8 +7,8 @@ import { Header, Footer } from "./components";
 
 
 function App() {
-  const location = useLocation()
-  
+  const location = useLocation();
+
   return (
     <CartProvider>
       <Header />

@@ -1,5 +1,5 @@
-import { FaRegStar, FaStar, FaStarHalfAlt } from "react-icons/fa";
 import { ProductsPropsRating } from "../../types";
+import { StarOutlineIcon, StarHalfOutlineIcon, StarFullOutlineIcon } from "../icons/index";
 
 export default function Rating({ rating, numReviews }: ProductsPropsRating) {
   return (
@@ -8,55 +8,55 @@ export default function Rating({ rating, numReviews }: ProductsPropsRating) {
         <span>
           <i>
             {rating >= 1 ? (
-              <FaStar />
+              <StarFullOutlineIcon />
             ) : rating >= 0.5 ? (
-              <FaStarHalfAlt />
+              <StarHalfOutlineIcon />
             ) : (
-              <FaRegStar />
+              <StarOutlineIcon />
             )}
           </i>
         </span>
         <span>
           <i>
             {rating >= 2 ? (
-              <FaStar />
+              <StarFullOutlineIcon />
             ) : rating >= 1.5 ? (
-              <FaStarHalfAlt />
+              <StarHalfOutlineIcon />
             ) : (
-              <FaRegStar />
+              <StarOutlineIcon />
             )}
           </i>
         </span>
         <span>
           <i>
             {rating >= 3 ? (
-              <FaStar />
+              <StarFullOutlineIcon />
             ) : rating >= 2.5 ? (
-              <FaStarHalfAlt />
+              <StarHalfOutlineIcon />
             ) : (
-              <FaRegStar />
+              <StarOutlineIcon />
             )}
           </i>
         </span>
         <span>
           <i>
             {rating >= 4 ? (
-              <FaStar />
+              <StarFullOutlineIcon />
             ) : rating >= 3.5 ? (
-              <FaStarHalfAlt />
+              <StarHalfOutlineIcon />
             ) : (
-              <FaRegStar />
+              <StarOutlineIcon />
             )}
           </i>
         </span>
         <span>
           <i>
             {rating >= 5 ? (
-              <FaStar />
+              <StarFullOutlineIcon />
             ) : rating >= 4.5 ? (
-              <FaStarHalfAlt />
+              <StarHalfOutlineIcon />
             ) : (
-              <FaRegStar />
+              <StarOutlineIcon />
             )}
           </i>
         </span>

@@ -28,9 +28,7 @@ function useFilterProducts(): FilteredProductProps {
     const fetchFilterProducts = async () => {
       try {
         const newProducts = await getFilterProducts(filters);
-        if(newProducts.length === 0) {
-          throw new Error("There was a problem in our server 😪")
-        }
+        if (!newProducts) throw new Error("Error fetching filtered products 😪");
         console.log("fetch filter results: newProducts")
         console.log(newProducts)
 

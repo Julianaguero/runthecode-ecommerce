@@ -4,7 +4,7 @@ import { useFetchBrands } from "../hooks";
 import {
   ArrowDownDropCircleIcon,
   ArrowDownDropCircleOutlineIcon,
-} from "./Icons";
+} from "./icons";
 
 type BrandFilterProps = {
   changeFilters: (filters: (prevFilters: FilterProps) => FilterProps) => void;

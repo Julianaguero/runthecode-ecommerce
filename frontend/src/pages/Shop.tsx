@@ -1,15 +1,19 @@
-import { useContext } from "react";
+import { Suspense, lazy, useContext } from "react";
 import { Helmet } from "react-helmet-async";
 import {
-  Products,
+  // Products,
   Spinner,
   InnerAnimation,
-  FiltersBar,
+  // FiltersBar,
   ErrorCard,
-  Breadcrumbs,
+  // Breadcrumbs,
 } from "../components/index";
 import { FiltersContext } from "../context/FiltersContext";
 import { type BreadcrumbsProps } from "../types";
+
+const Products = lazy(() => import("../components/shop/Products"));
+const Breadcrumbs = lazy(() => import("../components/shop/Breadcrumbs"));
+const FiltersBar = lazy(() => import("../components/FiltersBar"));
 
 export default function Shop() {
   const filtersContext = useContext(FiltersContext);
@@ -22,16 +26,14 @@ export default function Shop() {
   const checkErrors = (): string => {
     let error = "";
 
-    if(fetchProductsError !== null && fetchProductsError) {
-      return error = fetchProductsError;
-    } else if(filteringError !== null && filteringError) {
-      return error = filteringError;
+    if (fetchProductsError !== null && fetchProductsError) {
+      return (error = fetchProductsError);
+    } else if (filteringError !== null && filteringError) {
+      return (error = filteringError);
     } else {
-      return error
+      return error;
     }
-    
   };
-
 
   console.log("checkErrors: ");
   console.log(checkErrors());
@@ -49,20 +51,29 @@ export default function Shop() {
       </Helmet>
       <main className="max-w-[1560px] mx-auto ">
         {/* MOVE <SearchBar /> to header */}
-        <aside>
-          <Breadcrumbs breadcrumbPath={breadcrumbPath} />
-        </aside>
-        <section className="w-full mx-auto mb-10 flex flex-col justify-start sm:gap-2">
-          <aside className="flex flex-row items-center justify-start gap-6 w-full px-6 py-2">
-              <FiltersBar />
+        <Suspense fallback={<Spinner />}>
+          <aside>
+            <Breadcrumbs breadcrumbPath={breadcrumbPath} />
           </aside>
-          {isLoading && <Spinner />}
-          {checkErrors().length > 0  && <ErrorCard error={checkErrors()} />}
-          {filteredProducts && checkErrors().length === 0  && (
-            <Products filteredProducts={filteredProducts} />
-          )}
-        </section>
+          <section className="w-full mx-auto mb-10 flex flex-col justify-start sm:gap-2">
+            <aside className="flex flex-row items-center justify-start gap-6 w-full px-6 py-2">
+              <FiltersBar />
+            </aside>
+            {isLoading && <Spinner />}
+            {checkErrors().length > 0 && <ErrorCard error={checkErrors()} />}
+            {filteredProducts && checkErrors().length === 0 && (
+              <Products filteredProducts={filteredProducts} />
+            )}
+          </section>
+        </Suspense>
       </main>
     </InnerAnimation>
   );
+}
+
+
+function wait (time: number) {
+  return new Promise(resolve => {
+    setTimeout(resolve, time)
+  })
 }
