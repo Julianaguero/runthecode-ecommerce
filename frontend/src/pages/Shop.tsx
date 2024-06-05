@@ -26,10 +26,13 @@ export default function Shop() {
       return error = fetchProductsError;
     } else if(filteringError !== null && filteringError) {
       return error = filteringError;
+    } else {
+      return error
     }
     
-    return error
   };
+
+  console.log(checkErrors());
   const breadcrumbPath: BreadcrumbsProps[] = [{ name: "Shop", url: "/shop" }];
 
   return (
@@ -49,8 +52,8 @@ export default function Shop() {
               <FiltersBar />
           </aside>
           {isLoading && <Spinner />}
-          {checkErrors()  && <ErrorCard error={checkErrors()} />}
-          {filteredProducts && !checkErrors() && (
+          {checkErrors.length > 0  && <ErrorCard error={checkErrors()} />}
+          {filteredProducts && checkErrors.length === 0  && (
             <Products filteredProducts={filteredProducts} />
           )}
         </section>
