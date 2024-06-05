@@ -4,7 +4,7 @@ import {
   calculateItemTotalPrice,
   priceToLocaleString,
 } from "../utils/cartUtils";
-import DeleteBinLineIcon from "./icons/DeleteBinLineIcon";
+import { DeleteBinLineIcon } from "./icons/index";
 
 export default function CartItem({
   product,
@@ -16,8 +16,15 @@ export default function CartItem({
 
   return (
     <li className="flex flex-row gap-2 py-2 items-center  w-full">
-      <Link to={`/product/${product._id}/${product.name.replaceAll(" ", "-")}`}  className="">
-        <img src={img} alt={name} className="aspect-square object-cover px-1 max-h-[7.5rem] min-w-[120px]" />
+      <Link
+        to={`/product/${product._id}/${product.name.replaceAll(" ", "-")}`}
+        className=""
+      >
+        <img
+          src={img}
+          alt={name}
+          className="aspect-square object-cover px-1 max-h-[7.5rem] min-w-[120px]"
+        />
       </Link>
       <div className="flex flex-col justify-center  ">
         <Link
@@ -27,8 +34,10 @@ export default function CartItem({
             {name}
           </h4>
         </Link>
-        <p className="font-semibold  md:mb-4 
-        text-[clamp(0.7rem,2vw,0.9rem)] ">
+        <p
+          className="font-semibold  md:mb-4 
+        text-[clamp(0.7rem,2vw,0.9rem)] "
+        >
           {priceToLocaleString(calculateItemTotalPrice(price, quantity))}
         </p>
         <div className="flex items-center">

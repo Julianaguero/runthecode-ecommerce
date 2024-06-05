@@ -70,10 +70,3 @@ export default function Shop() {
     </InnerAnimation>
   );
 }
-
-
-function wait (time: number) {
-  return new Promise(resolve => {
-    setTimeout(resolve, time)
-  })
-}
