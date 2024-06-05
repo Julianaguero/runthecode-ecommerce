@@ -17,5 +17,4 @@ function useCredentials(): Plugin {
 export default defineConfig({
   // eslint-disable-next-line react-hooks/rules-of-hooks
   plugins: [react(), useCredentials()],
-  base: import.meta.env.VITE_BASE_URL || '/',
 })
