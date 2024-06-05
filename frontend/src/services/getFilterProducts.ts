@@ -3,7 +3,7 @@ import { type ProductsProps, type FilterProps } from "../types";
 
 
 const getFilterProducts = async ({ brand, minPrice, maxPrice }: FilterProps): Promise<ProductsProps[]> => {
-    const url = new URL(`${import.meta.env.VITE_API_URL}filter`)
+    const url = new URL(`${process.env.NODE_ENV === 'development' ? 'http://localhost:3000/' : '/'}filter`)
     if (brand) brand.map(singleBrand => (
         url.searchParams.append("brand", singleBrand)
     ));
