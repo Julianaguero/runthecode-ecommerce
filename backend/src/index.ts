@@ -1,11 +1,11 @@
-import express, {  Request, Response } from "express";
+import express, {  NextFunction, Request, Response } from "express";
 import dotenv from "dotenv";
 import cors from 'cors';
 import path from "path";
 
 import router from "./routes/index"
 import db from "./db/index"
-// import CustomError from "./error/CustomError";
+import CustomError from "./error/CustomError";
 import globalErrorHandler from "./middlewares/globalErrorHandler";
 
 dotenv.config();
@@ -41,11 +41,11 @@ app.get('*', (_req: Request, res: Response) =>
 
 //initial error handler // initial error middlewares
 
-// app.all("*", (_req: Request, _res: Response, next: NextFunction) => {
-//     const error = new CustomError("Endpoint not found", 404, "INVALID_URL")
+app.all("*", (_req: Request, _res: Response, next: NextFunction) => {
+    const error = new CustomError("Endpoint not found", 404, "INVALID_URL")
   
-//     next(error)
-//   });
+    next(error)
+  });
 
 
 app.use(globalErrorHandler);

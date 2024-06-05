@@ -39,7 +39,7 @@ export default function Shop() {
           </aside>
           {isLoading && <Spinner />}
           {error && <ErrorCard error={error} />}
-          {filteredProducts && !error && (
+          {filteredProducts && (
             <Products filteredProducts={filteredProducts} />
           )}
         </section>

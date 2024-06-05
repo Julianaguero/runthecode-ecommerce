@@ -13,9 +13,9 @@ export const FiltersContext = createContext<FiltersContextProps>({
 export default function FiltersProvider({
   children,
 }: FilterContextProviderProps) {
-  const { products, isLoading } =  useFetchProducts<ProductsProps>()
+  const { products, isLoading,  error} =  useFetchProducts<ProductsProps>()
 
-  const { filteredProducts, setFilters, error } = useFilterProducts();
+  const { filteredProducts, setFilters} = useFilterProducts();
 
   const initialProducts = useRef<ProductsProps[]>([])
 
@@ -30,7 +30,7 @@ export default function FiltersProvider({
   }
 
   return (
-    <FiltersContext.Provider value={{ productsToRender, setFilters, isLoading, error }}>
+    <FiltersContext.Provider value={{ productsToRender, setFilters, isLoading, error}}>
       {children}
     </FiltersContext.Provider>
   );
