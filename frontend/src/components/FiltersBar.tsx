@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { BrandFilter, PriceFilter } from ".";
 import { FiltersContext } from "../context/FiltersContext";
-import { FilteringIcon } from "./mygod/index";
+import { FilteringIcon } from "./icons/index";
 
 export default function FiltersBar() {
   const { setFilters } = useContext(FiltersContext);

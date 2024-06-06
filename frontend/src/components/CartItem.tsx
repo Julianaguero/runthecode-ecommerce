@@ -4,7 +4,7 @@ import {
   calculateItemTotalPrice,
   priceToLocaleString,
 } from "../utils/cartUtils";
-import { DeleteBinLineIcon } from "./mygod/index";
+import { DeleteBinLineIcon } from "./icons/index";
 
 export default function CartItem({
   product,
