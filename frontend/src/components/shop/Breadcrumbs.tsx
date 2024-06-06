@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { HomeIcon, RightArrowIcon } from "../icons";
+import { HomeIcon, RightArrowIcon } from "../mygod/index";
 import { type BreadcrumbsProps } from "../../types";
 import { useRef } from "react";
 
