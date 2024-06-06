@@ -4,7 +4,7 @@ import {
   calculateItemTotalPrice,
   priceToLocaleString,
 } from "../utils/cartUtils";
-import { DeleteBinLineIcon } from "./icons/";
+import { DeleteBinLineIcon } from "./icons";
 
 export default function CartItem({
   product,

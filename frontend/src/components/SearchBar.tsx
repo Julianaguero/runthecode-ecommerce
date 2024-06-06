@@ -2,7 +2,7 @@
 // que el handleSubmit redirija a /search y muestre los resultados de la busqueda.
 
 import { useState } from "react";
-import { SearchIcon } from "./icons/";
+import { SearchIcon } from "./icons";
 import { useSearch } from "../hooks";
 
 export default function SearchBar() {
