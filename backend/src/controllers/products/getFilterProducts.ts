@@ -1,7 +1,7 @@
 import { RequestHandler } from "express";
 import productModel from "../../models/productModel";
 import { NotFoundError } from "../../error";
-import { type FilterParamsProps } from "../../types";
+import { type FilterParamsProps } from "../../types/types";
 
 
 const getFilterProducts: RequestHandler = async (req, res, next) => {

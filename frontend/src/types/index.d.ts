@@ -55,11 +55,13 @@ export type VariantsProps = {
 // Context Provider Types
 export type FiltersContextProps = Omit<FilteredProductProps, "filteredProducts"> & { productsToRender: ProductsProps[], isLoading: boolean };
 
-export type FilterContextProviderProps = {
-  children: React.ReactNode;
+type ChildrenContext = {
+  children:  React.ReactNode
 };
 
-export type CartContextProviderProps = FilterContextProviderProps
+export type FilterContextProviderProps = ChildrenContext;
+
+export type CartContextProviderProps = ChildrenContext
 
 export type CartContextProps = {
   cart: CartItemProps[];
@@ -77,6 +79,9 @@ export type CartItemCardProps = CartItemProps & {
   handleChangeQuantity: React.ChangeEventHandler<HTMLSelectElement>;
   removeItemFromCart: React.MouseEventHandler<HTMLButtonElement>
 }
+
+//Auth context types 
+export type AuthContextProviderProps = ChildrenContext
 
 // Reducer types 
 

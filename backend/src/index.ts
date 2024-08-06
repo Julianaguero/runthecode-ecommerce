@@ -7,6 +7,7 @@ import router from "./routes/index"
 import db from "./db/index"
 import CustomError from "./error/CustomError";
 import globalErrorHandler from "./middlewares/globalErrorHandler";
+import { seedRouter } from "./routes/seedRoutes";
 
 dotenv.config();
 
@@ -22,8 +23,12 @@ const options: cors.CorsOptions = {
 }
 app.use(cors(options));
 
+app.use(express.json())
+app.use(express.urlencoded({extended: true}))
+
 //routes handler
 app.use("/api", router)
+app.use("/api", seedRouter)
 
 
 app.use(express.static(path.join(__dirname, '../../frontend/dist')))
