@@ -1,5 +1,5 @@
 import { RequestHandler } from "express";
-import { ProductsDataProps } from "../../types";
+import { ProductsDataProps } from "../../types/types";
 import productModel from "../../models/productModel";
 import CustomError from "../../error/CustomError";
 

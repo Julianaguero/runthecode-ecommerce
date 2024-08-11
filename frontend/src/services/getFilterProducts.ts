@@ -1,8 +1,8 @@
 import { type ProductsProps, type FilterProps } from "../types";
+import { errorHandler } from "../utils/errorHandler";
 
 
-
-const getFilterProducts = async ({ brand, minPrice, maxPrice }: FilterProps): Promise<ProductsProps[]> => {
+const getFilterProducts = async ({ brand, minPrice, maxPrice }: FilterProps): Promise<ProductsProps[] | Error> => {
     const url = new URL(`${process.env.NODE_ENV === 'development' ? 'http://localhost:3000/' : '/'}api/filter`)
     if (brand) brand.map(singleBrand => (
         url.searchParams.append("brand", singleBrand)
@@ -16,16 +16,15 @@ const getFilterProducts = async ({ brand, minPrice, maxPrice }: FilterProps): Pr
         })
         if(!response.ok) {
             const errorResponse = await response.json()
-            throw new Error(`Message: ${errorResponse.code}`)
+            throw new Error(errorResponse.message || response.statusText)
         }
         const filteredProducts = await response.json() as ProductsProps[]
 
         return filteredProducts;
 
     } catch (error) {
-        throw new Error(`Error fetching data: ${error}`);
+        return errorHandler(error)
     }
-
 }
 
 export default getFilterProducts;

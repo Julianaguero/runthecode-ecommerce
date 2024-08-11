@@ -20,5 +20,6 @@ router.get("/users", (_req, res) => __awaiter(void 0, void 0, void 0, function* 
     const users = yield userModel_1.default.find().exec();
     res.status(200).json(users);
 }));
+router.post("/user/signin", users_1.signInUser);
 router.post("/user/signup", users_1.createUser);
 exports.default = router;

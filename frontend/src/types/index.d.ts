@@ -16,26 +16,27 @@ export type ProductsProps = {
 // TENER EN CUENTA QUE TS NO FUNCIONA EN RUN TIME, SI NO DE MANERA ESTATICA (EN TIEMPO DE COMPILADO)
 export type ProductsPropsRating = Pick<ProductsProps, "rating" | "numReviews">
 
-// export type BrandsListProps = {
-//   brandsList: string;
-// }
+export type BrandsProps = string
+export type BrandListProps = BrandsProps[]
 
 //Fetch types
-export type FetchProductsProps<T> = {
-  products: T[] | ProductsProps[];
+export type ErrorProp = string | null
+
+export type FetchProductsProps = {
+  products: ProductsProps[];
   brands?: string[];
   isLoading: boolean;
-  error: string | null;
+  error: ErrorProp;
 };
 
 export type FetchBrandsProps = {
   brands: string[];
-  error: string | null;
+  error: ErrorProp;
 };
 
 
 export type FilterProps = {
-  brand?: string[] | []
+  brand?: string[] | [];
   minPrice: number;
   maxPrice: number;
 };
@@ -43,7 +44,8 @@ export type FilterProps = {
 export type FilteredProductProps = {
   filteredProducts: ProductsProps[];
   setFilters: React.Dispatch<React.SetStateAction<FilterProps>>;
-  error: string | null;
+  filtersError: ErrorProp;
+  isLoading: boolean
 };
 
 export type VariantsProps = {
@@ -53,19 +55,22 @@ export type VariantsProps = {
 };
 
 // Context Provider Types
-export type FiltersContextProps = Omit<FilteredProductProps, "filteredProducts"> & { productsToRender: ProductsProps[], isLoading: boolean };
+export type FiltersContextProps = Omit<FilteredProductProps, "filteredProducts"> & { filteredProducts: ProductsProps[], isLoading: boolean };
 
-export type FilterContextProviderProps = {
-  children: React.ReactNode;
+type ChildrenProp = React.ReactNode
+
+type ChildrenContext = {
+  children: ChildrenProp
 };
 
-export type CartContextProviderProps = FilterContextProviderProps
+export type FilterContextProviderProps = ChildrenContext;
+
+export type CartContextProviderProps = ChildrenContext
 
 export type CartContextProps = {
-  cart: CartItemProps[];
-  addItemToCart: ({product, quantity}: CartItemProps) => void;
-  removeItemFromCart: ({product}: CartItemProps) => void;
-
+  cart: CartProps[];
+  addItemToCart: ({ product, quantity }: CartItemProps) => void;
+  removeItemFromCart: ({ product }: CartItemProps) => void;
 };
 
 export type CartItemProps = {
@@ -73,23 +78,27 @@ export type CartItemProps = {
   quantity?: number;
 };
 
+export type CartProps = {
+  product: ProductsProps;
+  quantity: number;
+}
+
 export type CartItemCardProps = CartItemProps & {
   handleChangeQuantity: React.ChangeEventHandler<HTMLSelectElement>;
   removeItemFromCart: React.MouseEventHandler<HTMLButtonElement>
 }
 
+//Auth context types 
+export type AuthContextProviderProps = ChildrenContext
+
 // Reducer types 
 
-export type CartStateProps = {
-  product: ProductsProps;
-  quantity?: number
-}
+export type CartStateProps = CartProps
 
 export type CartActionProps = {
   type: "ADD_TO_CART" | "REMOVE_FROM_CART" | "CLEAR_CART";
-  payload: CartStateProps;
+  payload: CartItemProps;
 }
-
 
 
 //Button types
@@ -101,6 +110,7 @@ export type ButtonProps = {
 
 export type ActionButtonProps = Partial<Pick<ButtonProps, "buttonStyle" | "title">> & {
   isDisabled?: boolean;
+  type?: "button" | "submit" | "reset" | undefined;
   onClick?: () => void;
 };
 
@@ -113,6 +123,7 @@ export type LinkButtonProps = {
   title: string;
   to: string;
   buttonStyle?: string;
+  onClick?: () => void;
 }
 
 
@@ -122,4 +133,21 @@ export type BreadcrumbsProps = {
   url: string;
 };
 
+//Collection types
+export interface CollectionsProps {
+  collectionParam: string;
+}
+export interface CollectionsLayoutProps extends CollectionsProps {
+  children: ChildrenProp;
+}
+
+//Filtersbar props
+export interface PriceInputProps {
+  id: string;
+  title: string;
+  handleChange: React.ChangeEventHandler<HTMLInputElement>;
+  minPrice?: number;
+  maxPrice?: number;
+  placeholder: string;
+}
 

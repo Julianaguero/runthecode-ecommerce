@@ -1,5 +1,5 @@
 import { RequestHandler } from "express";
-import { UpdateProductsDataPropsBody, UpdateProductsDataPropsParams } from "../../types";
+import { UpdateProductsDataPropsBody, UpdateProductsDataPropsParams } from "../../types/types";
 import mongoose from "mongoose";
 import { BadRequestError, NotFoundError } from "../../error";
 import productModel from "../../models/productModel";

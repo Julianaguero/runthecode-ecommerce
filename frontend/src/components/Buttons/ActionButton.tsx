@@ -4,7 +4,8 @@ export default function ActionButton({
   title,
   buttonStyle,
   isDisabled,
-  onClick
+  onClick,
+  type
 }: ActionButtonProps) {
 
   return (
@@ -19,6 +20,7 @@ export default function ActionButton({
         border-black border-2 uppercase  px-4 py-2  hover:shadow-[0.15rem_0.15rem_#772dff,-0.15rem_-0.15rem_#ffcb00] transition 
         ${buttonStyle}`}
       onClick={onClick}
+      type={type || "button"}
     >
       {title}
     </button>

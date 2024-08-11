@@ -1,34 +1,43 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { getProducts } from "../services/index";
-import { type FetchProductsProps } from "../types";
+import { ProductsProps, type FetchProductsProps } from "../types";
 
-function useFetchProducts<T>(urlParam?: string): FetchProductsProps<T> {
+function useFetchProducts(urlParam?: string): FetchProductsProps {
 
-  const [products, setProducts] = useState<T[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [products, setProducts] = useState<ProductsProps[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
+  const memoizedProducts = useRef<ProductsProps[] | null>(null)
+
   useEffect(() => {
+    if(memoizedProducts.current){
+      setProducts(memoizedProducts.current)
+      return
+    }
+
     const fetchData = async () => {
-      setIsLoading(true);
+      console.time('filter array');
 
       try {
-        const productsData = await getProducts<T[]>(urlParam);
-        if (!productsData) throw new Error("Error fetching products data");
-        setProducts(productsData || []);
+        const productsData = await getProducts(urlParam);
+        memoizedProducts.current = productsData as ProductsProps[]
+        setProducts(productsData as ProductsProps[]);
         setError(null);
       } catch (error) {
         if (error instanceof Error) {
           setError(error.message);
         } else {
-          setError("An unknown error occurred");
+          setError("An unknown error occurred.");
         }
       } finally {
         setIsLoading(false);
       }
     };
-
+    console.log("initialFetch is runnning")
     fetchData();
+    console.timeEnd('filter array');
+
   }, [urlParam]);
 
   return { products, isLoading, error };
