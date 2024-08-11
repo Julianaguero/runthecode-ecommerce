@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Cart } from ".";
 import { links } from "../utils/data";
 import { HiOutlineUser } from "react-icons/hi";
-import FramerMagnetic from "./FramerMagnetic";
+import FramerMagnetic from "./layout/FramerMagnetic";
 
 import logo from "../assets/logo.png"
 
@@ -21,12 +21,11 @@ export default function Header() {
        }}
     >
       <div className="h-12 w-40 order-1">
-        {/* CAMBIAR DIV POR LINK para produccion */}
         <Link 
         to="/"
          className="h-12" >
           <img
-            className="h-12"
+            className="h-12 aspect-[13/4]"
             typeof="svg"
             src={logo}
             alt="runthecode sneaker store"
@@ -54,14 +53,13 @@ export default function Header() {
       </nav>
       <nav className="w-40 flex  justify-end gap-5 order-2 md:order-3 place-self-end">
         <NavLink 
-          to="/"
+          to="/user/profile"
           aria-label="user login"
         >
           <HiOutlineUser className="w-6 h-6 hover:text-persimmon" />
         </NavLink>
         <div>
           <Cart />
-
         </div>
       </nav>
     </motion.header>

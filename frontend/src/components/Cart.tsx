@@ -19,6 +19,7 @@ export default function Cart() {
 
     return () => {
       document.removeEventListener("mousedown", handler);
+      setIsOpen(false)
     };
   }, []);
 
@@ -41,7 +42,7 @@ export default function Cart() {
           Subtotal: <span>{calculateTotalPrice(cart)}</span>
         </p>
         <div className="grid justify-center">
-          <LinkButtonActive title="GO TO CHECKOUT" to="/cart" />
+          <LinkButtonActive title="GO TO CHECKOUT" to="/cart" onClick={() => setIsOpen(false)} />
         </div>
       </div>
     </aside>

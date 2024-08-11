@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { type FilterProps } from "../types";
-import { useFetchBrands } from "../hooks";
+import { useProducts } from "../hooks";
 import {
   ArrowDownDropCircleIcon,
   ArrowDownDropCircleOutlineIcon,
@@ -11,20 +11,11 @@ type BrandFilterProps = {
 };
 
 export default function BrandFilter({ changeFilters }: BrandFilterProps) {
-  const { brands } = useFetchBrands();
+  const { brands } = useProducts();
 
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
   const [isOpen, setIsOpen] = useState(false);
 
-  //  const brandList = useRef<string[]>([]);
-
-  // useEffect(() => {
-  //   if (brands) {
-  //     // Calcular marcas únicas solo cuando las marcas cambian
-  //     const uniqueBrands = brands.filter((brand, index) => brands.indexOf(brand) === index);
-  //     brandList.current = uniqueBrands;
-  //   }
-  // }, [brands]);
 
   const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const brand = event.currentTarget.value;

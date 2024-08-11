@@ -4,13 +4,20 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const CustomError_1 = __importDefault(require("../error/CustomError"));
-const globalErrorHandler = (error, _req, res) => {
+/* eslint-disable @typescript-eslint/no-unused-vars */
+const globalErrorHandler = (error, _req, res, _) => {
     if (error instanceof CustomError_1.default) {
+        // Custom error handling
         return res.status(error.statusCode).json({
-            code: error.code,
+            status: "error",
             message: error.message,
+            code: error.code || "UNKNOWN_ERROR",
         });
     }
-    return res.status(500).json({ error: 'Something went wrong!' });
+    // General error handling
+    res.status(500).json({
+        status: "error",
+        message: "Something went wrong on the server.",
+    });
 };
 exports.default = globalErrorHandler;

@@ -1,9 +1,13 @@
 import { createContext, useEffect, useState } from "react";
 import {type AuthContextProviderProps } from "../types";
 import { type AuthResponse } from "../services/authAPI";
+import { USER_AUTH_INITIAL_STATE } from "../utils/constants";
+import useLocalStorage from "../hooks/useLocalStorage";
 
 export interface AuthContextProps {
     userAuth:  UserResponse | null,
+    setUserAuth:  React.Dispatch<React.SetStateAction<UserResponse>>
+
 }
 
 export interface UserResponse extends AuthResponse {
@@ -14,23 +18,18 @@ export interface UserResponse extends AuthResponse {
 
 export const AuthContext = createContext<AuthContextProps>({
     userAuth: null,
+    setUserAuth: () => {}
 })
 
 
-
-export const AuthProvider = ({ children }: AuthContextProviderProps) => {
-    const [ userAuth, setUserAuth ] = useState<UserResponse>({
-        success: false,
-        data: undefined,
-        message: "",
-        isLoading: false,
-        isAutenthicated: false
-    })
+const AuthProvider = ({ children }: AuthContextProviderProps) => {
+    const [ userAuth, setUserAuth ] = useState<UserResponse>(USER_AUTH_INITIAL_STATE)
+    const {getItem} = useLocalStorage("userData")
 
     useEffect(() => {
-        const userInLocalStorage =  window.localStorage.getItem("userInfo")
+        const userInLocalStorage =  getItem("userData")
         if(userInLocalStorage) {
-            const userInfo = JSON.parse(userInLocalStorage)
+            const userInfo = userInLocalStorage
             setUserAuth((prev: UserResponse) => ({
                 ...prev,
                 success: true,
@@ -39,14 +38,15 @@ export const AuthProvider = ({ children }: AuthContextProviderProps) => {
             }))
             return
         }
-        console.log("user NOT found")
      
-    }, [])
+    }, [setUserAuth, getItem])
 
 
     return (    
-        <AuthContext.Provider value={{userAuth}}>
+        <AuthContext.Provider value={{userAuth, setUserAuth}}>
             { children }
         </AuthContext.Provider>
     )
 }
+
+export default AuthProvider

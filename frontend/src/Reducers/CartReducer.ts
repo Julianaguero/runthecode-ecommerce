@@ -37,7 +37,7 @@ export const cartReducer = (state: CartStateProps[] , action: CartActionProps): 
                 } else if (newState[productInCartIndex].quantity! < MAX_QUANTITY) { // non null assertion is used, to avoid Object is possibly 'undefined' warning
                   newState[productInCartIndex].quantity! += 1;
                 } else {
-                  throw new Error("Maximum quantity per product reached");
+                  alert("Maximum quantity per product reached");
                 }
                 updateLocalStorage(newState)
                 return newState;

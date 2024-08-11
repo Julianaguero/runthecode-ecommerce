@@ -11,7 +11,7 @@ export default function ProductCard({ product }: { product: ProductsProps }) {
     >
       <div className=" h-[clamp(5rem,80%,25rem)] aspect-square flex items-center justify-center overflow-hidden rounded-xl">
         <img
-          className="object-cover object-right-bottom h-full w-full aspect-square group-hover:scale-110 transition-all duration-150"
+          className="object-cover object-right-bottom h-auto w-full aspect-square group-hover:scale-110 transition-all duration-150"
           src={`${product.img}`}
           alt={`${product.name}`}
         />

@@ -1,9 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import { lazy, Suspense } from "react";
-import { BrandsBanner, HeroBanner } from "../components/index";
-import Spinner from "../components/Spinner";
-import InnerAnimation from "../components/layout/InnerAnimation";
-import Stripes from "../components/layout/Stripes";
+import { BrandsBanner, HeroBanner, InnerAnimation, Stripes, CustomMessagePage } from "../components/index";
 
 const ProductsBanner = lazy(() => import('../components/home/ProductsBanner'))
 
@@ -19,25 +16,15 @@ export default function Home() {
         <link rel="canonical" href="/home" />
       </Helmet>
       <main className="overflow-hidden mx-auto max-w-[1900px]">
-        <section>
-          {/* <div className="w-screen h-[4rem] sm:h-full md:mb-20 mb-10 mx-auto max-w-[1900px] overflow-hidden">
-            <video
-              className="w-10/12  h-full object-cover mx-auto"
-              autoPlay
-              loop
-              typeof="video/mp4"
-            >
-              <source src="src/assets/adidas_banner.mp4" />
-            </video>
-          </div> */}
+
           <HeroBanner />
           <Stripes />
           {/* <h3 className="my-40 mx-auto text-center text-4xl md:text-[4rem]">- Top premium brands -</h3> */}
-          <Suspense fallback={<Spinner />}>
+          <Suspense fallback={<CustomMessagePage type="isLoading" />}>
             <ProductsBanner />
           </Suspense>
           <BrandsBanner />
-        </section>
+
       </main>
     </InnerAnimation>
   );
