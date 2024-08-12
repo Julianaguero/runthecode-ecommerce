@@ -12,14 +12,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.seedRouter = void 0;
 const express_1 = require("express");
-const users_1 = require("../controllers/users");
 const userModel_1 = __importDefault(require("../models/userModel"));
-const router = (0, express_1.Router)();
-router.get("/users", (_req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const users = yield userModel_1.default.find().exec();
-    res.status(200).json(users);
+const data_1 = require("../utils/data");
+exports.seedRouter = (0, express_1.Router)();
+exports.seedRouter.get("/seed", (_req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    yield userModel_1.default.deleteMany({});
+    const createdUsers = yield userModel_1.default.insertMany(data_1.sampleUsers);
+    res.json({ createdUsers });
 }));
-router.post("/user/signin", users_1.signInUser);
-router.post("/user/signup", users_1.createUser);
-exports.default = router;

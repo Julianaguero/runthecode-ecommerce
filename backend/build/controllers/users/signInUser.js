@@ -15,30 +15,26 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const bcryptjs_1 = __importDefault(require("bcryptjs"));
 const userModel_1 = __importDefault(require("../../models/userModel"));
 const generateToken_1 = require("../../utils/generateToken");
-const CustomError_1 = __importDefault(require("../../error/CustomError"));
-const createUser = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    const name = req.body.name;
-    const mail = req.body.mail;
-    const password = req.body.password;
+const signInUser = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        if (!name) {
-            throw new CustomError_1.default("need to have a name", 400, "BAD_REQUEST");
+        const user = yield userModel_1.default.findOne({ mail: req.body.mail });
+        console.log(user);
+        if (user) {
+            if (bcryptjs_1.default.compareSync(req.body.password, user.password)) {
+                res.json({
+                    _id: user._id,
+                    name: user.name,
+                    mail: user.mail,
+                    isAdmin: user.isAdmin,
+                    token: (0, generateToken_1.generateToken)(user)
+                });
+                return;
+            }
         }
-        const newUser = yield userModel_1.default.create({
-            name: name,
-            mail: mail,
-            password: bcryptjs_1.default.hashSync(password),
-        });
-        return res.json({
-            _id: newUser._id,
-            name: newUser.name,
-            mail: newUser.mail,
-            isAdmin: newUser.isAdmin,
-            token: (0, generateToken_1.generateToken)(newUser),
-        });
+        res.status(401).json({ message: "Invalid email or password" });
     }
     catch (error) {
         next(error);
     }
 });
-exports.default = createUser;
+exports.default = signInUser;

@@ -7,7 +7,6 @@ import { generateToken } from "../../utils/generateToken";
 
 
 const signInUser: RequestHandler<unknown, unknown, UserProps, unknown> = async (req, res, next) => {
-    console.log(req.body)
     try {
         const user = await userModel.findOne({mail: req.body.mail})
         console.log(user)

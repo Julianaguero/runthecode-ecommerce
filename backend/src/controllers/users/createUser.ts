@@ -29,7 +29,6 @@ const createUser: RequestHandler<unknown, unknown, UserProps, unknown> = async (
             token: generateToken(newUser),
         })
     } catch (error) {
-        console.error(error)
         next(error)
     }
 };
