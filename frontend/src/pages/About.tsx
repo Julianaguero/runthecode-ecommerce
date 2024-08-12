@@ -1,11 +1,10 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
-import { InnerAnimation, StoreCard } from "../components";
-import imgStore from "../assets/web_nike_sneaker_5.jpg";
-import { storesLocationData } from "../utils/data";
 import { motion } from "framer-motion";
+import { InnerAnimation, StoreCard } from "../components";
+import { storesLocationData } from "../utils/data";
+import imgStore from "../assets/web_nike_sneaker_5.webp";
 
-// type StoreLocationProps = (typeof storesLocationData)[]
 
 export default function About() {
   return (
@@ -15,9 +14,9 @@ export default function About() {
         <meta name="description" content="Check our stores!." />
         <link rel="canonical" href="/shop" />
       </Helmet>
-      <main>
+      <main className="relative">
         <motion.section
-          className="flex w-full flex-col-reverse md:flex-row md:even:flex-row-reverse mx-auto max-w-[1920px] md:h-1/2 items-center justify-center mb-10"
+          className=" relative flex w-full flex-col-reverse md:flex-row md:even:flex-row-reverse mx-auto max-w-[1920px] md:h-1/2 items-center justify-center mb-10"
           initial={{ opacity: 0, y: 0 }}
           animate={{ opacity: 1, y: 30 }}
           transition={{ delay: 0.8 }}
@@ -33,7 +32,7 @@ export default function About() {
             />
           </div>
         </motion.section>
-        <section>
+        <section className="relative">
           <h2 className="text-center text-[2.5rem] md:text-[2rem] font-400 my-32 ">
             Our stores
           </h2>

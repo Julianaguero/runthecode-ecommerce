@@ -15,17 +15,20 @@ const PORT: number = parseInt((process.env.PORT || '3005') as string, 10);
 const app = express();
 app.use(express.json());
 
+
 // CORS config
 const allowedOrigins = [
     "http://localhost:5174",
     "http://localhost:5173",
     "https://runthecode-ecommerce.onrender.com/"
 ];
+
 const options: cors.CorsOptions = {
     credentials: true,
     origin: allowedOrigins
 };
 app.use(cors(options));
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -36,9 +39,11 @@ app.use("/api", seedRouter);
 
 // Initial error handler for unknown API routes
 app.all("/api/*", (_req: Request, _res: Response, next: NextFunction) => {
+
     const error = new CustomError("Endpoint not found", 404, "INVALID_URL");
     next(error);
 });
+
 
 // Global error handler
 app.use(globalErrorHandler);
@@ -57,3 +62,5 @@ db.connectToDatabase().then(() => {
         console.log(`Listening on port ${PORT}`);
     });
 });
+
+

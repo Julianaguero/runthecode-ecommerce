@@ -13,6 +13,10 @@
   text-decoration: none;
 }
 
+html { 
+  position: relative
+}
+
 :root {
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -122,10 +126,13 @@
     -webkit-text-stroke: 2px white;
   }
   
-  .font-outline-2-yellow {
-    -webkit-text-stroke: 0.5px rgba(96, 13, 134, 0.525);
+  .font-outline-2-violet {
+    -webkit-text-stroke: 0.9px #772dff;
   }
-
+  .font-outline-2-yellow {
+    -webkit-text-stroke: 0.5px #ffcb00;
+  }
+  
   .font-outline-4 {
     -webkit-text-stroke: 4px white;
   }

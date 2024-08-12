@@ -38,6 +38,7 @@ const createUser = (req, res, next) => __awaiter(void 0, void 0, void 0, functio
         });
     }
     catch (error) {
+        console.error(error);
         next(error);
     }
 });

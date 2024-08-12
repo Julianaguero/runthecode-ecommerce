@@ -1,17 +1,14 @@
-import React from "react";
-
-type PriceInputProps = {
-    id: string;
-    title: string;
-    handleChange: React.ChangeEventHandler<HTMLInputElement>;
-    minPrice?: number;
-    maxPrice?: number;
-    placeholder: string;
+import { PriceInputProps } from "../../types";
 
 
-}
-
-export default function PriceInput({ id, title, handleChange, minPrice, maxPrice, placeholder}: PriceInputProps) {
+export default function PriceInput({
+  id,
+  title,
+  handleChange,
+  minPrice,
+  maxPrice,
+  placeholder,
+}: PriceInputProps) {
   return (
     <div className="flex flex-1 flex-col relative">
       <label htmlFor={id} className="text-[0.8em]">
@@ -33,3 +30,5 @@ export default function PriceInput({ id, title, handleChange, minPrice, maxPrice
     </div>
   );
 }
+
+

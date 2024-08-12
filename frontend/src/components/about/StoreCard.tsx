@@ -1,9 +1,8 @@
 import { useRef } from "react";
-import { storesLocationData } from "../utils/data"
 import { motion, useScroll, useTransform } from "framer-motion";
+import { storesLocationData } from "../../utils/data"
 
-import { ClockIcon, LocationIcon } from "../components/Icons"
-
+import { ClockIcon, LocationIcon } from "../index"
 import { FaPhoneAlt } from "react-icons/fa";
 
 
@@ -20,7 +19,7 @@ export default function StoreCard({ name, address, phoneNumber, time, imgUrl}: S
   
 
   return (
-    <motion.article className="flex w-full mb-20 flex-col-reverse md:flex-row md:even:flex-row-reverse mx-auto max-w-[1920px] items-center justify-center"
+    <motion.article className=" flex w-full mb-20 flex-col-reverse md:flex-row md:even:flex-row-reverse mx-auto max-w-[1920px] items-center justify-center"
     ref={ref}
     style={{
       scale: scaleProgress,

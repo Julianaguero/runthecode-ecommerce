@@ -1,22 +1,8 @@
-import ArrowDownDropCircleOutlineIcon from "./ArrowDownDropCircleOutlineIcon";
-import ArrowDownDropCircleIcon from "./ArrowDownDropCircleIcon";
-import ClockIcon from "./ClockIcon";
-import DeleteBinLineIcon from "./DeleteBinLineIcon";
-import FilteringIcon from "./FilteringIcon";
-import LocationIcon from "./LocationIcon";
-import HomeIcon from "./HomeIcon";
-import RightArrowIcon from "./RightArrowIcon";
-
-
-
-export {
-    ArrowDownDropCircleOutlineIcon,
-    ArrowDownDropCircleIcon,
-    ClockIcon,
-    DeleteBinLineIcon,
-    FilteringIcon,
-    HomeIcon,
-    LocationIcon,
-    RightArrowIcon,
-
-}
+export {default as ArrowDownDropCircleOutlineIcon } from "./ArrowDownDropCircleOutlineIcon"
+export {default as ArrowDownDropCircleIcon } from "./ArrowDownDropCircleIcon"
+export {default as ClockIcon } from "./ClockIcon"
+export {default as DeleteBinLineIcon } from "./DeleteBinLineIcon"
+export {default as FilteringIcon } from "./FilteringIcon"
+export {default as LocationIcon } from "./LocationIcon"
+export {default as HomeIcon } from "./HomeIcon"
+export {default as RightArrowIcon } from "./RightArrowIcon"

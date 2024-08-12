@@ -1,12 +1,13 @@
 import { RequestHandler } from "express";
 import productModel from "../../models/productModel";
 import { NotFoundError } from "../../error";
+import { ProductsDataProps } from "../../types/types";
 
 const getProductsByBrand: RequestHandler = async (req, res, next) => {
     const requestedBrand = req.params.brand as string;
     
     try {
-        const selectedBrand = await productModel.aggregate([
+        const selectedBrand : ProductsDataProps[] | [] = await productModel.aggregate([
             {
                 $search: {
                     index: "searchProducts",

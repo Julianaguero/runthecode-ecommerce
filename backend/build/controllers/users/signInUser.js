@@ -16,6 +16,7 @@ const bcryptjs_1 = __importDefault(require("bcryptjs"));
 const userModel_1 = __importDefault(require("../../models/userModel"));
 const generateToken_1 = require("../../utils/generateToken");
 const signInUser = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+
     try {
         const user = yield userModel_1.default.findOne({ mail: req.body.mail });
         console.log(user);

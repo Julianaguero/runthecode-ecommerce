@@ -1,8 +1,7 @@
-// const API_URL = "https://jaguero.pythonanywhere.com/runthecode/"
+import { type ProductsProps } from "../types";
+import { errorHandler } from "../utils/errorHandler";
 
-
-
-async function getProducts<T>(urlParams?: string): Promise<T> {
+async function getProducts(urlParams?: string): Promise<ProductsProps[] | Error> {
 
     let url: string = `${process.env.NODE_ENV === 'development' ? 'http://localhost:3000/' : '/'}api/products/`;
 
@@ -15,14 +14,14 @@ async function getProducts<T>(urlParams?: string): Promise<T> {
         });
 
         if (!response.ok) {
-            const errorResponse = await response.json();
-            throw new Error(`Message: ${errorResponse.code}`);
+            const errorData = await response.json();
+            throw new Error(errorData.message || response.statusText);
         }
-        const products = (await response.json()) as T;
+        const products = (await response.json()) as ProductsProps[];
 
         return products;
     } catch (error) {
-        throw new Error(`Error fetching data: ${error}`);
+        return errorHandler(error)
     }
 }
 

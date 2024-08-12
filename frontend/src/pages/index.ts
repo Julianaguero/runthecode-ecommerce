@@ -1,15 +1,10 @@
-import About from "./About";
-import Home from "./Home";
-import Shop from "./Shop";
-import Search from "./Search";
-import ShoppingCart from "./ShoppingCart";
-import ProductPage from "./ProductPage";
-
-export {
-    About,
-    Home,
-    Search,
-    Shop,
-    ShoppingCart,
-    ProductPage, 
-}
+export {default as About} from "./About"
+export {default as Home} from "./Home"
+export {default as Shop} from "./Shop"
+export {default as Search} from "./Search"
+export {default as ShoppingCart} from "./ShoppingCart"
+export {default as ProductPage} from "./ProductPage"
+export {default as UserSignIn} from "./UserSignIn"
+export {default as UserSignUp} from "./UserSignUp"
+export {default as Profile} from "./Profile"
+export {default as Collections} from "./Collections"

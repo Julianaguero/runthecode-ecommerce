@@ -9,7 +9,6 @@ import { generateToken } from "../../utils/generateToken";
 const signInUser: RequestHandler<unknown, unknown, UserProps, unknown> = async (req, res, next) => {
     try {
         const user = await userModel.findOne({mail: req.body.mail})
-        console.log(user)
         if(user) {
             if (bcrypt.compareSync(req.body.password, user.password)) {
                 res.json({

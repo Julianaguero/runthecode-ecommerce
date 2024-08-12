@@ -1,14 +1,10 @@
-import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { FiltersContext } from "../../context/FiltersContext";
 import { ProductsProps } from "../../types";
-import ProductCard from "../shop/ProductCard";
+import { useProducts } from "../../hooks/";
+import { ProductCard, ProductsBannerSkeleton } from "../index";
 
 export default function ProductsBanner() {
-  const filtersContext = useContext(FiltersContext);
-  // Comprobación de nulidad antes de acceder a filteredProducts
-  const filteredProducts = filtersContext?.productsToRender;
-  const error = filtersContext?.error;
+  const { listOfProducts, isLoading } = useProducts();
 
   return (
     <section className="max-w-[1560px] mx-auto w-full mb-20 px-6">
@@ -24,17 +20,17 @@ export default function ProductsBanner() {
           EXPLORE MORE
         </Link>
       </div>
-
       <ul className="grid grid-cols-2 md:grid-cols-4 gap-4 xl:gap-4 mx-auto px-4 [&>*:nth-child(odd)]:content-end [&>*:nth-child(even)]:content-start sm:h-[29rem] xl:h-[31rem]">
-        {error && ""}
-        {filteredProducts.slice(7, 11).map((product: ProductsProps) => (
-          <li
-            key={product._id}
-            className="max-w-[16rem] xl:max-w-[18rem] mx-auto hover:scale-[.98] transition-all duration-150"
-          >
-            <ProductCard product={product} />
-          </li>
-        ))}
+        {isLoading && <ProductsBannerSkeleton/>}
+        {!isLoading &&
+          listOfProducts.slice(7, 11).map((product: ProductsProps) => (
+            <li
+              key={product._id}
+              className="max-w-[16rem] xl:max-w-[18rem] mx-auto hover:scale-[.98] transition-all duration-150"
+            >
+              <ProductCard product={product} />
+            </li>
+          ))}
       </ul>
     </section>
   );
