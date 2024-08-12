@@ -3,10 +3,12 @@ import { errorHandler } from "../utils/errorHandler";
 
 async function getProducts(urlParams?: string): Promise<ProductsProps[] | Error> {
 
-    let url: string = `${process.env.NODE_ENV === 'development' ? 'http://localhost:3000/' : '/'}api/products/`;
+    const BASE_URL = import.meta.env.VITE_API_URL
+
+    const url = new URL('/api/products/', BASE_URL)
 
     //check if we search a prodId and we add it to the url
-    if (urlParams) url = `${process.env.NODE_ENV === 'development' ? 'http://localhost:3000/' : '/'}api/products/${urlParams}`;
+    if (urlParams) url.pathname = `/api/products/${urlParams}`;
 
     try {
         const response: Response = await fetch(url, {
