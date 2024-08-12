@@ -16,8 +16,14 @@ dotenv_1.default.config();
 const PORT = parseInt((process.env.PORT || '3005'), 10);
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
-//CORS config
-const allowedOrigins = ["http://localhost:5174", "http://localhost:5173", "http://localhost:4173/", "https://runthecode-ecommerce.onrender.com/"];
+
+// CORS config
+const allowedOrigins = [
+    "http://localhost:5174",
+    "http://localhost:5173",
+    "https://runthecode-ecommerce.onrender.com/"
+];
+
 const options = {
     credentials: true,
     origin: allowedOrigins
@@ -25,21 +31,28 @@ const options = {
 app.use((0, cors_1.default)(options));
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
-// Routes handler
+
+// API Routes handler
 app.use("/api", index_1.default);
 app.use("/api", seedRoutes_1.seedRouter);
-// Initial error handler // Initial error middlewares
-app.all("*", (_req, _res, next) => {
+// Initial error handler for unknown API routes
+app.all("/api/*", (_req, _res, next) => {
+
     const error = new CustomError_1.default("Endpoint not found", 404, "INVALID_URL");
     next(error);
 });
+// Global error handler
 app.use(globalErrorHandler_1.default);
-// Serving static files
+
+// Serving static files for SPA
 app.use(express_1.default.static(path_1.default.join(__dirname, '../../frontend/dist')));
-app.get('*', (_req, res) => res.sendFile(path_1.default.join(__dirname, '../../frontend/dist/index.html')));
-// Port listen
-app.listen(PORT, () => {
-    console.log(`Listening on port ${PORT}`);
+// Fallback for SPA - Serve index.html for any unknown route not starting with /api
+app.get('*', (_req, res) => {
+    res.sendFile(path_1.default.join(__dirname, '../../frontend/dist/index.html'));
 });
 // MongoDB connection 
-index_2.default.connectToDatabase();
+index_2.default.connectToDatabase().then(() => {
+    app.listen(PORT, () => {
+        console.log(`Listening on port ${PORT}`);
+    });
+});
