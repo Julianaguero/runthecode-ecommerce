@@ -17,7 +17,6 @@ function useFetchProducts(urlParam?: string): FetchProductsProps {
     }
 
     const fetchData = async () => {
-      console.time('filter array');
 
       try {
         const productsData = await getProducts(urlParam);
@@ -34,9 +33,7 @@ function useFetchProducts(urlParam?: string): FetchProductsProps {
         setIsLoading(false);
       }
     };
-    console.log("initialFetch is runnning")
     fetchData();
-    console.timeEnd('filter array');
 
   }, [urlParam]);
 

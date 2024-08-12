@@ -1,6 +1,6 @@
-import { CartItem } from ".";
-import { useCart } from "../hooks";
-import { CartItemProps } from "../types";
+import { CartItem } from "..";
+import { useCart } from "../../hooks";
+import { CartItemProps } from "../../types";
 
 export default function CartItemsList({cart} : {cart :  CartItemProps[]}) {
     const { addItemToCart, removeItemFromCart } = useCart()

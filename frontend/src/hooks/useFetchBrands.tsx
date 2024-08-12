@@ -22,7 +22,6 @@ export default function useFetchBrands(): FetchBrandsProps {
         if (!uniqueBrands) throw new Error("Error fetching brands data");
          // Almacena los brands en el ref y en el state
          memoizedBrands.current = uniqueBrands;
-         console.log("fetching brands")
         setBrands(uniqueBrands || []);
         setError(null); 
 

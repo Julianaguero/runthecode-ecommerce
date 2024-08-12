@@ -11,7 +11,6 @@ const getFilterProducts = async ({ brand, minPrice, maxPrice }: FilterProps): Pr
     ));
     if(minPrice && minPrice > 0) url.searchParams.append("minPrice", String(minPrice))
     if(maxPrice && maxPrice < 2000) url.searchParams.append("maxPrice", String(maxPrice))
-    console.log(url)
 
     try {
         const response = await fetch(url, {

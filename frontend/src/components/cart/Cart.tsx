@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import { CartButton, CartItemsList, LinkButtonActive } from ".";
-import { useCart } from "../hooks";
-import { calculateTotalPrice } from "../utils/cartUtils";
+import { CartButton, CartItemsList, LinkButtonActive } from "..";
+import { useCart } from "../../hooks";
+import { calculateTotalPrice } from "../../utils/cartUtils";
 
 export default function Cart() {
   const { cart } = useCart();

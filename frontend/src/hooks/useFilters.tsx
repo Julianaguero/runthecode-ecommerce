@@ -28,17 +28,10 @@ function useFilters({
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  // const isFirstRender = useRef(true);
-  // const memoizedFilteredProducts = useRef<ProductsProps[] | null>(null);
+
 
   useEffect(() => {
-    // Si es el primer renderizado, no hacemos nada y lo marcamos como falso
-    // if (isFirstRender.current) {
-    //   isFirstRender.current = false;
-    //   return;
-    // }
-
-    //compare filtersInitalState with filters and returns an Initial List of Products preventing re fetch for already fetched data.
+     //compare filtersInitalState with filters and returns an Initial List of Products preventing re fetch for already fetched data.
     if(listOfProducts && JSON.stringify(filters) === JSON.stringify(filtersInitialState)) {
       setIsLoading(false)
       setError(null)
@@ -46,18 +39,9 @@ function useFilters({
       return 
     }
 
-    // if (memoizedFilteredProducts.current) {
-    //   setFilteredProducts(memoizedFilteredProducts.current);
-    //   return;
-    // }
-
     const fetchFilterProducts = async () => {
       try {
         const newProducts = await getFilterProducts(filters);
-        // memoizedFilteredProducts.current = newProducts as ProductsProps[];
-        console.log("fetchfilterProducts running");
-        console.log(newProducts, "filteredproductos");
-
         setFilteredProducts(newProducts as ProductsProps[]);
         setError(null);
       } catch (error) {

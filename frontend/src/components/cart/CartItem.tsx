@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import { CartItemCardProps } from "../types";
+import { CartItemCardProps } from "../../types";
 import {
   calculateItemTotalPrice,
   priceToLocaleString,
-} from "../utils/cartUtils";
-import DeleteBinLineIcon from "./Icons/DeleteBinLineIcon";
+} from "../../utils/cartUtils";
+import DeleteBinLineIcon from "../Icons/DeleteBinLineIcon";
 
 export default function CartItem({
   product,
