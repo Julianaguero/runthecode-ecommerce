@@ -5,6 +5,7 @@ import {
   type FilteredProductProps,
 } from "../types";
 import getFilterProducts from "../services/getFilterProducts";
+import { capitalizeWords } from "../utils/generics";
 
 export type UseFilterProps = {
   listOfProducts?: ProductsProps[];
@@ -16,10 +17,12 @@ function useFilters({
   brand = "",
 }: UseFilterProps = {}): FilteredProductProps {
   const filtersInitialState: FilterProps = useMemo(() => {
-    return {brand: brand ? [brand] : [],
-    minPrice: 0,
-    maxPrice: 2000,}
-  }, [brand]) 
+    return {
+      brand: brand ? [capitalizeWords(brand)] : [],
+      minPrice: 0,
+      maxPrice: 2000,
+    };
+  }, [brand]);
 
   const [filteredProducts, setFilteredProducts] =
     useState<ProductsProps[]>(listOfProducts);
@@ -28,15 +31,16 @@ function useFilters({
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-
-
   useEffect(() => {
-     //compare filtersInitalState with filters and returns an Initial List of Products preventing re fetch for already fetched data.
-    if(listOfProducts && JSON.stringify(filters) === JSON.stringify(filtersInitialState)) {
-      setIsLoading(false)
-      setError(null)
-      setFilteredProducts(listOfProducts)
-      return 
+    //compare filtersInitalState with filters and returns an Initial List of Products preventing re fetch for already fetched data.
+    if (
+      listOfProducts &&
+      JSON.stringify(filters) === JSON.stringify(filtersInitialState)
+    ) {
+      setIsLoading(false);
+      setError(null);
+      setFilteredProducts(listOfProducts);
+      return;
     }
 
     const fetchFilterProducts = async () => {
