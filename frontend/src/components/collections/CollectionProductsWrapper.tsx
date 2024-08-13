@@ -23,7 +23,7 @@ export default function CollectionProductsWrapper({
     isLoading: filterIsLoading,
     filtersError,
     setFilters,
-  } = useFilters({ listOfProducts: products });
+  } = useFilters({ listOfProducts: products, brand: collectionParam });
 
   const error = collectionError || filtersError;
   const isLoading = initialIsLoading || filterIsLoading;
