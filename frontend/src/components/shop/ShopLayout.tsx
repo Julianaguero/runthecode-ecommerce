@@ -17,7 +17,7 @@ function ShopLayout({
       <Helmet>
         <title>Shop | Runthecode</title>
         <meta name="description" content="Shop our latest products now." />
-        <link rel="canonical" href="/shop" />
+        <link rel="canonical" href="https://runthecode-ecommerce.onrender.com//shop" />
       </Helmet>
       <main className="max-w-[1560px] mx-auto ">
         <aside>

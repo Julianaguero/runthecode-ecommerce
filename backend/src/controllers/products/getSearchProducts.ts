@@ -4,11 +4,7 @@ import { NotFoundError } from "../../error";
 
 
 const getSearchProducts: RequestHandler = async (req, res, next) => {
-    
-    const searchTerm = req.params.searchTerm as string;
-    //busqueda usando query 
-    // const searchTerm = req.query.query
-    //GET http://localhost:3000/api/search?query=jpg
+    const searchTerm = req.query.q; 
     
     try {
         //index: "searchProducts" was created on AtlasDB to perform fuzzySearch.
@@ -26,7 +22,7 @@ const getSearchProducts: RequestHandler = async (req, res, next) => {
             }
           ]).exec()
 
-        if(searchResult.length === 0) throw new NotFoundError("Product not found")
+        if(searchResult.length === 0) throw new NotFoundError("Product not found. ")
 
         res.status(200).json(searchResult);
 

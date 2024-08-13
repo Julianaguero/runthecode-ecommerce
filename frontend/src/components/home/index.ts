@@ -1,5 +1,6 @@
 export { default as BrandsBanner} from "./BrandsBanner"
 export { default as BrandsWrapper} from "./BrandsWrapper"
 export { default as HeroBanner} from "./HeroBanner"
+export { default as HomeLayout} from "./HomeLayout"
 export { default as ProductsBanner} from "./ProductsBanner"
 export { default as ProductsBannerSkeleton} from "./ProductsBannerSkeleton"

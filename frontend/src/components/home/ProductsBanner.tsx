@@ -20,7 +20,7 @@ export default function ProductsBanner() {
           EXPLORE MORE
         </Link>
       </div>
-      <ul className="grid grid-cols-2 md:grid-cols-4 gap-4 xl:gap-4 mx-auto px-4 [&>*:nth-child(odd)]:content-end [&>*:nth-child(even)]:content-start sm:h-[29rem] xl:h-[31rem]">
+      <ul className="grid grid-cols-2 md:grid-cols-4 gap-4 xl:gap-4 mx-auto md:px-4 [&>*:nth-child(odd)]:content-end [&>*:nth-child(even)]:content-start sm:h-[29rem] xl:h-[31rem]">
         {isLoading && <ProductsBannerSkeleton/>}
         {!isLoading &&
           listOfProducts.slice(7, 11).map((product: ProductsProps) => (

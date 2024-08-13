@@ -36,7 +36,7 @@ export default function ProductPage() {
             <meta name="description" content="Shop our latest products now." />
             <link
               rel="canonical"
-              href={`/product/${product._id}/${product.name.replaceAll(
+              href={`https://runthecode-ecommerce.onrender.com/product/${product._id}/${product.name.replaceAll(
                 " ",
                 "-"
               )}`}

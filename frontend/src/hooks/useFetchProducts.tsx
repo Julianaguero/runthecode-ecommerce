@@ -1,26 +1,24 @@
 import { useState, useEffect, useRef } from "react";
 import { getProducts } from "../services/index";
-import { ProductsProps, type FetchProductsProps } from "../types";
+import { type ProductsProps, type FetchProductsProps } from "../types";
 
 function useFetchProducts(urlParam?: string): FetchProductsProps {
-
   const [products, setProducts] = useState<ProductsProps[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
-  const memoizedProducts = useRef<ProductsProps[] | null>(null)
+  const memoizedProducts = useRef<ProductsProps[] | null>(null);
 
   useEffect(() => {
-    if(memoizedProducts.current){
-      setProducts(memoizedProducts.current)
-      return
+    if (memoizedProducts.current) {
+      setProducts(memoizedProducts.current);
+      return;
     }
 
     const fetchData = async () => {
-
       try {
         const productsData = await getProducts(urlParam);
-        memoizedProducts.current = productsData as ProductsProps[]
+        memoizedProducts.current = productsData as ProductsProps[];
         setProducts(productsData as ProductsProps[]);
         setError(null);
       } catch (error) {
@@ -34,7 +32,6 @@ function useFetchProducts(urlParam?: string): FetchProductsProps {
       }
     };
     fetchData();
-
   }, [urlParam]);
 
   return { products, isLoading, error };

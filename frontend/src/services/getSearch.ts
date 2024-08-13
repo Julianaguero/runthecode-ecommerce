@@ -1,24 +1,24 @@
-import { ProductsProps } from "../types";
+import { type ProductsProps } from "../types";
+import { errorHandler } from "../utils/errorHandler";
 
-const getSearch = async (searchParam?: string): Promise<ProductsProps[]>=> {
+const getSearch = async (query: string): Promise<ProductsProps[] | Error>=> {
+    const BASE_URL = import.meta.env.VITE_API_URL    
+
+    const url = new URL(`api/search?q=${query}`, BASE_URL)
     
     try {
-        let url: string = `${process.env.NODE_ENV === 'development' ? 'http://localhost:3000/' : '/'}api/search/`
-    
-        if(searchParam) url= `${process.env.NODE_ENV === 'development' ? 'http://localhost:3000/' : '/'}api/search/${searchParam}`
-
         const response: Response = await fetch(url, {
             method: "GET",
         });
         if (!response.ok) {
             const errorResponse = await response.json();
-            throw new Error(`message: ${errorResponse.code}`)
+            throw new Error(errorResponse.message || response.statusText)
         }
-        const searchedProducts = await response.json();
+        const searchedProducts = await (response.json()) as ProductsProps[];
 
         return searchedProducts;
     } catch (error) {
-        throw new Error(`Error fetching data: ${error}`);
+         return errorHandler(error)
     }
 };
 

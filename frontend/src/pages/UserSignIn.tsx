@@ -83,12 +83,12 @@ const UserSignIn = () => {
       <Helmet>
         <title>Sign in</title>
         <meta name="description" content="Shop our latest products now." />
-        <link rel="canonical" href="user/signin" />
+        <link rel="canonical" href="runthecode-ecommerce.onrender.com/user/signin" />
       </Helmet>
       <main className="max-w-[1560px] mx-auto ">
         <div className="relative flex flex-wrap flex-col md:flex-row items-center justify-center px-5 md:h-[37rem] max-w-[1560px] mx-auto mb-16">
           <div className="flex w-full md:w-[45%] h-full flex-col items-center md:justify-center justify-start  md:pl-[clamp(1rem,1vw+1rem,2rem)]">
-            <div className="flex flex-col justify-center items-center min-h-[60dvh] md:min-h-[75dvh] w-[80%] xl:w-[60%]">
+            <div className="flex flex-col justify-center items-center mb-6 md:mb-0 min-h-[60dvh] md:min-h-[75dvh] w-[80%] xl:w-[60%]">
   
               <SectionTitle customStyle="text-yellowbright mb-4">SIGN IN</SectionTitle>
               <form onSubmit={handleSubmit} className="flex flex-col items-center lg:items-start w-[100%]">

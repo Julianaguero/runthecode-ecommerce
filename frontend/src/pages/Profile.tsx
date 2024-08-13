@@ -1,9 +1,8 @@
 import { Helmet } from "react-helmet-async";
+import { useNavigate } from "react-router-dom";
 import { InnerAnimation, GenericButton, SectionTitle } from "../components";
-
 import { useAuth } from "../hooks";
 import { USER_AUTH_INITIAL_STATE } from "../utils/constants";
-import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -20,7 +19,7 @@ const Profile = () => {
       <Helmet>
         <title>Profile</title>
         <meta name="description" content="Edit your personal information." />
-        <link rel="canonical" href="user/profile" />
+        <link rel="canonical" href="https://runthecode-ecommerce.onrender.com/user/profile" />
       </Helmet>
       <main className="max-w-[1560px] mx-auto ">
         <div className="flex w-full md:w-[45%] min-h-[60dvh] flex-col pt-8 mb-16 gap-16 items-start  md:justify-center justify-start  md:pl-[clamp(1rem,1vw+1rem,2rem)] mx-auto">

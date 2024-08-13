@@ -7,7 +7,7 @@ export default function CartButton({ cart, onClick }: CardButtonProps) {
     return (
     <button
       aria-label="Cart"
-      className="relative h-full w-full"
+      className="relative w-6 h-6"
       onClick={onClick}
     >
       <HiShoppingCart

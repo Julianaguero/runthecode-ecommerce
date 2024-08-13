@@ -15,10 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const productModel_1 = __importDefault(require("../../models/productModel"));
 const error_1 = require("../../error");
 const getSearchProducts = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    const searchTerm = req.params.searchTerm;
-    //busqueda usando query 
-    // const searchTerm = req.query.query
-    //GET http://localhost:3000/api/search?query=jpg
+    const searchTerm = req.query.q;
     try {
         //index: "searchProducts" was created on AtlasDB to perform fuzzySearch.
         const searchResult = yield productModel_1.default.aggregate([
@@ -35,7 +32,7 @@ const getSearchProducts = (req, res, next) => __awaiter(void 0, void 0, void 0, 
             }
         ]).exec();
         if (searchResult.length === 0)
-            throw new error_1.NotFoundError("Product not found");
+            throw new error_1.NotFoundError("Product not found. ");
         res.status(200).json(searchResult);
     }
     catch (error) {

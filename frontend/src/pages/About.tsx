@@ -12,7 +12,7 @@ export default function About() {
       <Helmet>
         <title>About us | runthecode</title>
         <meta name="description" content="Check our stores!." />
-        <link rel="canonical" href="/shop" />
+        <link rel="canonical" href="https://runthecode-ecommerce.onrender.com/shop" />
       </Helmet>
       <main className="relative">
         <motion.section

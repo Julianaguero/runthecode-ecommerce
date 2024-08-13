@@ -26,7 +26,7 @@ function CollectionsLayout({
           name="description"
           content="Check our latest sneakers collections now."
         />
-        <link rel="canonical" href={`/shop/collections/${collectionName}`} />
+        <link rel="canonical" href={`https://runthecode-ecommerce.onrender.com/shop/collections/${collectionName}`} />
       </Helmet>
       <main className="max-w-[1560px] mx-auto ">
         <aside>

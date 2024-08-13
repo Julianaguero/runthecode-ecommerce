@@ -10,7 +10,7 @@ router.get("/products/:productId", index_1.getProductById);
 router.get("/collections/", index_1.getBrandList);
 router.get("/collections/:brand", index_1.getProductsByBrand);
 router.get("/filter", index_1.getFilterProducts);
-router.get("/search/:searchTerm", index_1.getSearchProducts);
+router.get("/search", index_1.getSearchProducts);
 //POST routes
 router.post("/products", index_1.createProduct);
 //PUT routes

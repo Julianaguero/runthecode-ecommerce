@@ -24,7 +24,7 @@ export default function Cart() {
   }, []);
 
   return (
-    <aside ref={menuRef}>
+    <aside ref={menuRef} className="w-6 h-6">
       <CartButton cart={cart} onClick={() => setIsOpen(!isOpen)} />
       <div
         className={`${

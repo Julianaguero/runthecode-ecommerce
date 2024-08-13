@@ -151,3 +151,7 @@ export interface PriceInputProps {
   placeholder: string;
 }
 
+//IconProps
+export interface SearchIconProps {
+  customStyle?: string
+}

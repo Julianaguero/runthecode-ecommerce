@@ -11,7 +11,7 @@ router.get("/products/:productId", getProductById)
 router.get("/collections/", getBrandList);
 router.get("/collections/:brand", getProductsByBrand);
 router.get("/filter", getFilterProducts)
-router.get("/search/:searchTerm", getSearchProducts)
+router.get("/search", getSearchProducts)
 
 //POST routes
 router.post("/products", createProduct)

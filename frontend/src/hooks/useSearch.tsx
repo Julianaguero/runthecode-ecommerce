@@ -4,40 +4,37 @@ import { getSearch } from "../services";
 
 type UseSearchProps = {
   searchResults: ProductsProps[];
-  updateSearchTerm?: React.Dispatch<React.SetStateAction<string>>;
+  isLoading?: boolean;
   searchError?: string | null;
 };
 
-function useSearch(): UseSearchProps {
-  const [searchTerm, updateSearchTerm] = useState<string>(" ");
-  const [searchError, setSearchError] = useState<string | null>(null);
+function useSearch(query : string | null ): UseSearchProps {
   const [searchResults, setSearchResults] = useState<ProductsProps[]>([]);
-  
-  
+  const [isLoading, setIsLoading] = useState(true);
+  const [searchError, setSearchError] = useState<string | null>(null);
 
   useEffect(() => {
-    if(!searchTerm || searchTerm.length === 0 || searchTerm === " ") return;
-    
+    if (query === null) return;
+
     const fetchSearch = async () => {
       try {
-        const searchData = await getSearch(searchTerm);
-        if (searchData.length === 0) throw new Error("No products found");
-        setSearchResults(searchData);
-        console.log(searchData)
-        setSearchError(null)
+        const searchData = await getSearch(query);
+        setSearchResults(searchData as ProductsProps[]);
+        setSearchError(null);
       } catch (error) {
         if (error instanceof Error) {
-            setSearchError(error.message);
+          setSearchError(error.message);
+        } else {
+          setSearchError("An unknown error occurred.");
         }
+      } finally {
+        setIsLoading(false);
       }
     };
+    fetchSearch();
+  }, [query]);
 
-    fetchSearch()
-  }, [searchTerm]);
-
-  
-
-  return { searchResults, updateSearchTerm, searchError };
+  return { searchResults, isLoading, searchError };
 }
 
 export default useSearch;
