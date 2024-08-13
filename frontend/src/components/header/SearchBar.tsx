@@ -73,6 +73,7 @@ export default function SearchBar() {
       </button>
       <input
         ref={inputRef}
+        id="search-input"
         className={`relative self-end text-black -mr-1 z-10 bg-transparent text-opacity-0 w-11 h-10 rounded-full cursor-pointer outline-none text-sm
                     ${
                       isExpanded
