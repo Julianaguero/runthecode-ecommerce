@@ -65,11 +65,11 @@ export default function SearchBar() {
       <button
         ref={buttonRef}
         type={isExpanded && searchTerm ? "submit" : "button"}
-        className="absolute top-[51%] -translate-y-[52%] -right-[4px] size-8 cursor-pointer z-20 bg-transparent"
+        className="absolute top-[51%] -translate-y-[52%] -right-[4px]  h-8  w-8 cursor-pointer z-30 bg-transparent"
         aria-label="Click to search your product."
         onClick={handleButtonClick}
       >
-        <SearchIcon customStyle="hover:text-violet" />
+        <SearchIcon customStyle="hover:text-violet text-black" />
       </button>
       <input
         ref={inputRef}

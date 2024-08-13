@@ -8,7 +8,7 @@ export default function Footer() {
             <p className="text-yellowbright font-ginto-nord-bold-italic text-[clamp(1.2rem,5.28vw+0.12rem,4.5rem)] leading-[clamp(2rem,0.8rem+4.8vw,5rem)]	">Subscribe <br/> to our <br/> newsletter</p>
             <div className="mt-8 relative w-[70%]">
                 <input placeholder="Enter your email" className="input-style placeholder:text-gray-300 "></input>
-                <button type="submit" className="text-white absolute bottom-3 right-1 hover:text-yellowbright text-lg size-8">OK</button>
+                <button type="submit" className="text-white absolute bottom-2 right-1 hover:text-yellowbright text-lg w-8 h-8">OK</button>
             </div>
           </div>
           <div className="flex flex-col sm:flex-row gap-12 text-white justify-evenly ">
